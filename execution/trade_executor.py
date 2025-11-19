@@ -238,15 +238,30 @@ class TradeExecutor:
             self.logger.warning("⚠️ Trading désactivé")
             return None
 
-        # Vérifier circuit breaker - avec parsing sécurisé
+        # Vérifier circuit breaker - avec calcul portfolio complet
         symbol = self.config.get('symbols', {}).get('primary', 'BTC/USDT')
         quote_currency = symbol.split('/')[1] if '/' in symbol else 'USDT'
         current_balance = self.client.get_balance(quote_currency).get('free', 0)
+
+        # Calculer la valeur totale du portfolio (cash + positions)
+        open_positions = self.position_manager.get_all_open_positions()
+        positions_value = 0.0
+        if open_positions:
+            try:
+                ticker = self.client.get_ticker(symbol)
+                current_price = ticker['last']
+                for pos in open_positions:
+                    positions_value += pos.size * current_price
+            except:
+                pass  # Si erreur, on continue avec positions_value = 0
+
+        total_portfolio_value = current_balance + positions_value
+
         # Réinitialiser le circuit breaker si nécessaire en début de backtest
         if not hasattr(self.circuit_breaker, 'initialized') or not self.circuit_breaker.initialized:
-            self.circuit_breaker.initialize(current_balance)
+            self.circuit_breaker.initialize(total_portfolio_value)
 
-        if not self.circuit_breaker.check(current_balance):
+        if not self.circuit_breaker.check(total_portfolio_value):
             cb_status = self.circuit_breaker.get_status()
             self.logger.warning(f"🚫 Circuit breaker actif: {cb_status}")
             return None
