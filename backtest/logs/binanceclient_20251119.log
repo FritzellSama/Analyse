@@ -1,0 +1,16 @@
+{"timestamp": "2025-11-19T23:20:04.521327", "level": "INFO", "module": "BinanceClient", "function": "_initialize_exchange", "line": 73, "message": "\ud83d\udd0c Initialisation Binance..."}
+{"timestamp": "2025-11-19T23:20:04.521502", "level": "INFO", "module": "BinanceClient", "function": "_initialize_exchange", "line": 77, "message": "\ud83d\udd10 MODE TESTNET AVEC RSA ACTIV\u00c9"}
+{"timestamp": "2025-11-19T23:20:05.896157", "level": "INFO", "module": "BinanceClient", "function": "_initialize_exchange", "line": 84, "message": "\u2705 Client Testnet RSA initialis\u00e9"}
+{"timestamp": "2025-11-19T23:20:05.896547", "level": "INFO", "module": "BinanceClient", "function": "_verify_connection", "line": 118, "message": "\ud83d\udd0d V\u00e9rification de la connexion..."}
+{"timestamp": "2025-11-19T23:20:06.407926", "level": "INFO", "module": "BinanceClient", "function": "_verify_connection", "line": 123, "message": "\u2705 Test ticker OK: BTC/USDT @ $90308.02"}
+{"timestamp": "2025-11-19T23:20:07.429122", "level": "INFO", "module": "BinanceClient", "function": "_verify_connection", "line": 130, "message": "\u23f0 D\u00e9calage temps: 0.18s"}
+{"timestamp": "2025-11-19T23:20:07.945471", "level": "INFO", "module": "BinanceClient", "function": "_verify_connection", "line": 144, "message": "\u2705 Test API priv\u00e9e OK (Balance accessible)"}
+{"timestamp": "2025-11-19T23:20:07.945978", "level": "INFO", "module": "BinanceClient", "function": "_verify_connection", "line": 182, "message": "\u2705 Connexion v\u00e9rifi\u00e9e et fonctionnelle!"}
+{"timestamp": "2025-11-19T23:20:15.470845", "level": "INFO", "module": "BinanceClient", "function": "_initialize_exchange", "line": 73, "message": "\ud83d\udd0c Initialisation Binance..."}
+{"timestamp": "2025-11-19T23:20:15.471061", "level": "INFO", "module": "BinanceClient", "function": "_initialize_exchange", "line": 77, "message": "\ud83d\udd10 MODE TESTNET AVEC RSA ACTIV\u00c9"}
+{"timestamp": "2025-11-19T23:20:16.582432", "level": "INFO", "module": "BinanceClient", "function": "_initialize_exchange", "line": 84, "message": "\u2705 Client Testnet RSA initialis\u00e9"}
+{"timestamp": "2025-11-19T23:20:16.582633", "level": "INFO", "module": "BinanceClient", "function": "_verify_connection", "line": 118, "message": "\ud83d\udd0d V\u00e9rification de la connexion..."}
+{"timestamp": "2025-11-19T23:20:17.670031", "level": "INFO", "module": "BinanceClient", "function": "_verify_connection", "line": 123, "message": "\u2705 Test ticker OK: BTC/USDT @ $90252.21"}
+{"timestamp": "2025-11-19T23:20:18.181238", "level": "INFO", "module": "BinanceClient", "function": "_verify_connection", "line": 130, "message": "\u23f0 D\u00e9calage temps: 0.27s"}
+{"timestamp": "2025-11-19T23:20:18.698494", "level": "INFO", "module": "BinanceClient", "function": "_verify_connection", "line": 144, "message": "\u2705 Test API priv\u00e9e OK (Balance accessible)"}
+{"timestamp": "2025-11-19T23:20:18.698966", "level": "INFO", "module": "BinanceClient", "function": "_verify_connection", "line": 182, "message": "\u2705 Connexion v\u00e9rifi\u00e9e et fonctionnelle!"}

@@ -1,0 +1,6 @@
+{"timestamp": "2025-11-19T23:20:04.634669", "level": "INFO", "module": "BinanceTestnetClient", "function": "_load_private_key", "line": 81, "message": "\ud83d\udd11 Cl\u00e9 priv\u00e9e RSA charg\u00e9e: test-prv-key.pem"}
+{"timestamp": "2025-11-19T23:20:05.891755", "level": "INFO", "module": "BinanceTestnetClient", "function": "_sync_time", "line": 151, "message": "\u2705 Temps synchronis\u00e9 (d\u00e9calage: -243ms)"}
+{"timestamp": "2025-11-19T23:20:05.894915", "level": "INFO", "module": "BinanceTestnetClient", "function": "__init__", "line": 60, "message": "\u2705 Binance Testnet Client initialis\u00e9 (RSA mode)"}
+{"timestamp": "2025-11-19T23:20:15.587329", "level": "INFO", "module": "BinanceTestnetClient", "function": "_load_private_key", "line": 81, "message": "\ud83d\udd11 Cl\u00e9 priv\u00e9e RSA charg\u00e9e: test-prv-key.pem"}
+{"timestamp": "2025-11-19T23:20:16.578452", "level": "INFO", "module": "BinanceTestnetClient", "function": "_sync_time", "line": 151, "message": "\u2705 Temps synchronis\u00e9 (d\u00e9calage: -165ms)"}
+{"timestamp": "2025-11-19T23:20:16.580970", "level": "INFO", "module": "BinanceTestnetClient", "function": "__init__", "line": 60, "message": "\u2705 Binance Testnet Client initialis\u00e9 (RSA mode)"}

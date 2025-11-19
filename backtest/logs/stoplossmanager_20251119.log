@@ -1,0 +1,1 @@
+{"timestamp": "2025-11-19T23:20:19.450721", "level": "INFO", "module": "StopLossManager", "function": "create_stop_loss", "line": 98, "message": "\ud83d\udee1\ufe0f  Stop loss cr\u00e9\u00e9: live_20251119_232019_dca_bot BUY @ 94064.57 (distance: 9331.09)"}

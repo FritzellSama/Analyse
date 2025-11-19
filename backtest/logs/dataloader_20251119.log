@@ -1,0 +1,8 @@
+{"timestamp": "2025-11-19T23:20:08.065695", "level": "INFO", "module": "DataLoader", "function": "__init__", "line": 58, "message": "\u2705 Data Loader initialis\u00e9"}
+{"timestamp": "2025-11-19T23:20:08.066302", "level": "INFO", "module": "DataLoader", "function": "load_historical_data", "line": 84, "message": "\ud83d\udce5 Chargement donn\u00e9es: BTC/USDT 1h (limit: 5000)"}
+{"timestamp": "2025-11-19T23:20:08.989152", "level": "INFO", "module": "DataLoader", "function": "load_historical_data", "line": 124, "message": "\u2705 345 bougies charg\u00e9es pour BTC/USDT 1h"}
+{"timestamp": "2025-11-19T23:20:08.991824", "level": "INFO", "module": "DataLoader", "function": "load_historical_data", "line": 84, "message": "\ud83d\udce5 Chargement donn\u00e9es: BTC/USDT 5m (limit: 5000)"}
+{"timestamp": "2025-11-19T23:20:10.118275", "level": "INFO", "module": "DataLoader", "function": "load_historical_data", "line": 124, "message": "\u2705 1000 bougies charg\u00e9es pour BTC/USDT 5m"}
+{"timestamp": "2025-11-19T23:20:10.119601", "level": "INFO", "module": "DataLoader", "function": "load_historical_data", "line": 84, "message": "\ud83d\udce5 Chargement donn\u00e9es: BTC/USDT 1m (limit: 5000)"}
+{"timestamp": "2025-11-19T23:20:10.934607", "level": "INFO", "module": "DataLoader", "function": "load_historical_data", "line": 124, "message": "\u2705 1000 bougies charg\u00e9es pour BTC/USDT 1m"}
+{"timestamp": "2025-11-19T23:20:18.804578", "level": "INFO", "module": "DataLoader", "function": "__init__", "line": 58, "message": "\u2705 Data Loader initialis\u00e9"}

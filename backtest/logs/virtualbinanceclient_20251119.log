@@ -1,0 +1,3 @@
+{"timestamp": "2025-11-19T23:20:11.047711", "level": "INFO", "module": "VirtualBinanceClient", "function": "__init__", "line": 59, "message": "\u2705 Virtual Client initialis\u00e9 - Balance: $300"}
+{"timestamp": "2025-11-19T23:20:11.048048", "level": "INFO", "module": "VirtualBinanceClient", "function": "load_historical_data", "line": 79, "message": "\ud83d\udce5 Donn\u00e9es historiques charg\u00e9es: ['1h', '5m', '1m']"}
+{"timestamp": "2025-11-19T23:20:19.451814", "level": "INFO", "module": "VirtualBinanceClient", "function": "create_order", "line": 325, "message": "\ud83d\udcdd Ordre virtuel: BUY 0.00100000 BTC/USDT @ $103343.96 (Frais: $0.10, Balance: $196.55)"}

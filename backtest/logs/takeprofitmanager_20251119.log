@@ -1,0 +1,4 @@
+{"timestamp": "2025-11-19T23:20:19.450938", "level": "INFO", "module": "TakeProfitManager", "function": "create_take_profits", "line": 131, "message": "\ud83c\udfaf Take profits cr\u00e9\u00e9s: live_20251119_232019_dca_bot - 3 niveaux"}
+{"timestamp": "2025-11-19T23:20:19.451069", "level": "INFO", "module": "TakeProfitManager", "function": "create_take_profits", "line": 137, "message": "   TP1: 117392.29350000 (50% position) R/R=1.50"}
+{"timestamp": "2025-11-19T23:20:19.451173", "level": "INFO", "module": "TakeProfitManager", "function": "create_take_profits", "line": 137, "message": "   TP2: 126723.38250000 (30% position) R/R=2.50"}
+{"timestamp": "2025-11-19T23:20:19.451265", "level": "INFO", "module": "TakeProfitManager", "function": "create_take_profits", "line": 137, "message": "   TP3: 140720.01600000 (20% position) R/R=4.00"}

@@ -1,0 +1,12 @@
+{"timestamp": "2025-11-19T23:20:15.359365", "level": "INFO", "module": "QuantumTraderBot", "function": "info", "line": 191, "message": "======================================================================"}
+{"timestamp": "2025-11-19T23:20:15.359514", "level": "INFO", "module": "QuantumTraderBot", "function": "info", "line": 191, "message": "\ud83d\ude80 QUANTUM TRADER PRO - INITIALISATION"}
+{"timestamp": "2025-11-19T23:20:15.359606", "level": "INFO", "module": "QuantumTraderBot", "function": "info", "line": 191, "message": "======================================================================"}
+{"timestamp": "2025-11-19T23:20:15.411730", "level": "INFO", "module": "QuantumTraderBot", "function": "info", "line": 191, "message": "\u2705 Configuration charg\u00e9e"}
+{"timestamp": "2025-11-19T23:20:15.411946", "level": "INFO", "module": "QuantumTraderBot", "function": "info", "line": 191, "message": "\ud83d\udd0c Connexion \u00e0 Binance..."}
+{"timestamp": "2025-11-19T23:20:18.699499", "level": "INFO", "module": "QuantumTraderBot", "function": "info", "line": 191, "message": "\ud83d\udce5 Initialisation Data Loader..."}
+{"timestamp": "2025-11-19T23:20:18.804936", "level": "INFO", "module": "QuantumTraderBot", "function": "info", "line": 191, "message": "\ud83d\udcca Initialisation Market Data..."}
+{"timestamp": "2025-11-19T23:20:18.864034", "level": "INFO", "module": "QuantumTraderBot", "function": "info", "line": 191, "message": "\ud83c\udfaf Initialisation Strategy Manager..."}
+{"timestamp": "2025-11-19T23:20:19.040967", "level": "INFO", "module": "QuantumTraderBot", "function": "info", "line": 191, "message": "\u26a1 Initialisation Trade Executor..."}
+{"timestamp": "2025-11-19T23:20:19.377808", "level": "INFO", "module": "QuantumTraderBot", "function": "info", "line": 191, "message": "\ud83d\udccb Initialisation Position Manager..."}
+{"timestamp": "2025-11-19T23:20:19.377904", "level": "INFO", "module": "QuantumTraderBot", "function": "info", "line": 191, "message": "\ud83d\udea6 Initialisation Circuit Breaker..."}
+{"timestamp": "2025-11-19T23:20:19.377982", "level": "INFO", "module": "QuantumTraderBot", "function": "info", "line": 191, "message": "\u2705 Tous les composants initialis\u00e9s"}

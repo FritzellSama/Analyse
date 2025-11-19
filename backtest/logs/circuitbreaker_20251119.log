@@ -1,0 +1,2 @@
+{"timestamp": "2025-11-19T23:20:19.378092", "level": "INFO", "module": "CircuitBreaker", "function": "initialize", "line": 59, "message": "\ud83d\udd12 Circuit Breaker initialis\u00e9: balance=$300.00"}
+{"timestamp": "2025-11-19T23:20:22.088169", "level": "WARNING", "module": "CircuitBreaker", "function": "_activate", "line": 203, "message": "\ud83d\udea8 CIRCUIT BREAKER ACTIV\u00c9!\n   Raison: Max Drawdown 34.48% >= 8.0%\n   Pause jusqu'\u00e0: 01:20:22\n   Duration: 120 minutes"}

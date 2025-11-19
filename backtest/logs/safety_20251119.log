@@ -1,0 +1,2 @@
+{"timestamp": "2025-11-19T23:20:11.111507", "level": "INFO", "module": "Safety", "function": "__init__", "line": 164, "message": "\u2705 GlobalLockManager initialis\u00e9"}
+{"timestamp": "2025-11-19T23:20:11.111754", "level": "INFO", "module": "Safety", "function": "__init__", "line": 686, "message": "\u2705 Thread Safety Manager initialis\u00e9"}

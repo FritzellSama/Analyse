@@ -1,0 +1,262 @@
+{"timestamp": "2025-11-19T23:20:04.422467", "level": "INFO", "module": "ReplayBacktest", "function": "__init__", "line": 62, "message": "======================================================================"}
+{"timestamp": "2025-11-19T23:20:04.422653", "level": "INFO", "module": "ReplayBacktest", "function": "__init__", "line": 63, "message": "\ud83d\udd04 QUANTUM TRADER PRO - REPLAY BACKTEST"}
+{"timestamp": "2025-11-19T23:20:04.422776", "level": "INFO", "module": "ReplayBacktest", "function": "__init__", "line": 64, "message": "======================================================================"}
+{"timestamp": "2025-11-19T23:20:04.468025", "level": "INFO", "module": "ReplayBacktest", "function": "load_historical_data", "line": 89, "message": "\ud83d\udce5 Chargement donn\u00e9es: 2023-01-01 \u2192 2024-11-08"}
+{"timestamp": "2025-11-19T23:20:08.066020", "level": "INFO", "module": "ReplayBacktest", "function": "load_historical_data", "line": 109, "message": "\ud83d\udce5 Chargement 1h..."}
+{"timestamp": "2025-11-19T23:20:08.989750", "level": "INFO", "module": "ReplayBacktest", "function": "load_historical_data", "line": 123, "message": "\u2705 345 bougies charg\u00e9es pour 1h"}
+{"timestamp": "2025-11-19T23:20:08.991315", "level": "INFO", "module": "ReplayBacktest", "function": "load_historical_data", "line": 109, "message": "\ud83d\udce5 Chargement 5m..."}
+{"timestamp": "2025-11-19T23:20:10.119023", "level": "INFO", "module": "ReplayBacktest", "function": "load_historical_data", "line": 123, "message": "\u2705 1000 bougies charg\u00e9es pour 5m"}
+{"timestamp": "2025-11-19T23:20:10.119335", "level": "INFO", "module": "ReplayBacktest", "function": "load_historical_data", "line": 109, "message": "\ud83d\udce5 Chargement 1m..."}
+{"timestamp": "2025-11-19T23:20:10.935372", "level": "INFO", "module": "ReplayBacktest", "function": "load_historical_data", "line": 123, "message": "\u2705 1000 bougies charg\u00e9es pour 1m"}
+{"timestamp": "2025-11-19T23:20:10.935744", "level": "INFO", "module": "ReplayBacktest", "function": "prepare_virtual_client", "line": 139, "message": "\ud83d\udd27 Pr\u00e9paration du client virtuel..."}
+{"timestamp": "2025-11-19T23:20:11.048202", "level": "INFO", "module": "ReplayBacktest", "function": "prepare_virtual_client", "line": 147, "message": "\u2705 Client virtuel pr\u00eat"}
+{"timestamp": "2025-11-19T23:20:11.048332", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 157, "message": "\ud83d\udd04 D\u00e9marrage du replay..."}
+{"timestamp": "2025-11-19T23:20:19.378186", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 175, "message": "\ud83d\udd12 Circuit breaker initialis\u00e9: $300.0"}
+{"timestamp": "2025-11-19T23:20:19.378292", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 192, "message": "\ud83d\udcca Timeframe principale: 1h"}
+{"timestamp": "2025-11-19T23:20:19.378376", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 193, "message": "\ud83d\udcca 345 bougies \u00e0 traiter"}
+{"timestamp": "2025-11-19T23:20:19.378448", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 194, "message": "\ud83d\udd04 D\u00e9marrage boucle de trading..."}
+{"timestamp": "2025-11-19T23:20:19.378518", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 195, "message": "\ud83d\udca1 Appuyez sur Ctrl+C pour arr\u00eater proprement"}
+{"timestamp": "2025-11-19T23:20:19.378595", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 207, "message": "\ud83d\ude80 D\u00c9BUT IT\u00c9RATION i=100"}
+{"timestamp": "2025-11-19T23:20:19.380170", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 241, "message": "\ud83d\udcca Progress: 0.0% | Date: 2025-11-09 18:00 | Prix: $104516.19 | Balance: $300.00"}
+{"timestamp": "2025-11-19T23:20:19.446199", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 298, "message": "\ud83d\udd0d SIGNAUX: i=100, 1 g\u00e9n\u00e9r\u00e9s"}
+{"timestamp": "2025-11-19T23:20:19.446455", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 303, "message": "\ud83d\udd0d FILTR\u00c9S: i=100, 1 apr\u00e8s filtrage"}
+{"timestamp": "2025-11-19T23:20:19.446553", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=100"}
+{"timestamp": "2025-11-19T23:20:19.452452", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 315, "message": "\u2705 POSITION CR\u00c9\u00c9E: Position(BTC/USDT_BUY_1763590819452): LONG 0.001000 BTC/USDT @ 103343.96 | PnL: $0.00 (0.00%)"}
+{"timestamp": "2025-11-19T23:20:20.001142", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 207, "message": "\ud83d\ude80 D\u00c9BUT IT\u00c9RATION i=110"}
+{"timestamp": "2025-11-19T23:20:20.001706", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 229, "message": "\ud83d\udd0d INDEX: i=110, TF=1h, ratio=1.0000, new_idx=110"}
+{"timestamp": "2025-11-19T23:20:20.002161", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 229, "message": "\ud83d\udd0d INDEX: i=110, TF=5m, ratio=12.0000, new_idx=999"}
+{"timestamp": "2025-11-19T23:20:20.002595", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 229, "message": "\ud83d\udd0d INDEX: i=110, TF=1m, ratio=60.0000, new_idx=999"}
+{"timestamp": "2025-11-19T23:20:20.002861", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 265, "message": "\ud83d\udd0d AVANT FETCH: tf=1h, current_idx=110"}
+{"timestamp": "2025-11-19T23:20:20.008906", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 271, "message": "\ud83d\udd0d APR\u00c8S FETCH: tf=1h, got 111 lignes OHLCV"}
+{"timestamp": "2025-11-19T23:20:20.010223", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 265, "message": "\ud83d\udd0d AVANT FETCH: tf=5m, current_idx=999"}
+{"timestamp": "2025-11-19T23:20:20.020631", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 271, "message": "\ud83d\udd0d APR\u00c8S FETCH: tf=5m, got 200 lignes OHLCV"}
+{"timestamp": "2025-11-19T23:20:20.022290", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 265, "message": "\ud83d\udd0d AVANT FETCH: tf=1m, current_idx=999"}
+{"timestamp": "2025-11-19T23:20:20.032916", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 271, "message": "\ud83d\udd0d APR\u00c8S FETCH: tf=1m, got 200 lignes OHLCV"}
+{"timestamp": "2025-11-19T23:20:20.034338", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 284, "message": "\ud83d\udd0d MARKET_DATA FINAL: 3 timeframes"}
+{"timestamp": "2025-11-19T23:20:20.034510", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 286, "message": "\ud83d\udd0d   \u2192 1h: 111 lignes"}
+{"timestamp": "2025-11-19T23:20:20.034642", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 286, "message": "\ud83d\udd0d   \u2192 5m: 200 lignes"}
+{"timestamp": "2025-11-19T23:20:20.034747", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 286, "message": "\ud83d\udd0d   \u2192 1m: 200 lignes"}
+{"timestamp": "2025-11-19T23:20:20.062446", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 298, "message": "\ud83d\udd0d SIGNAUX: i=110, 0 g\u00e9n\u00e9r\u00e9s"}
+{"timestamp": "2025-11-19T23:20:20.062624", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 303, "message": "\ud83d\udd0d FILTR\u00c9S: i=110, 0 apr\u00e8s filtrage"}
+{"timestamp": "2025-11-19T23:20:22.087778", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=142"}
+{"timestamp": "2025-11-19T23:20:22.150229", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=143"}
+{"timestamp": "2025-11-19T23:20:22.286515", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=145"}
+{"timestamp": "2025-11-19T23:20:22.368531", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=146"}
+{"timestamp": "2025-11-19T23:20:22.438016", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=147"}
+{"timestamp": "2025-11-19T23:20:22.504397", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=148"}
+{"timestamp": "2025-11-19T23:20:22.570428", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=149"}
+{"timestamp": "2025-11-19T23:20:22.636808", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 298, "message": "\ud83d\udd0d SIGNAUX: i=150, 1 g\u00e9n\u00e9r\u00e9s"}
+{"timestamp": "2025-11-19T23:20:22.637112", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 303, "message": "\ud83d\udd0d FILTR\u00c9S: i=150, 1 apr\u00e8s filtrage"}
+{"timestamp": "2025-11-19T23:20:22.637234", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=150"}
+{"timestamp": "2025-11-19T23:20:22.704148", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=151"}
+{"timestamp": "2025-11-19T23:20:22.769145", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=152"}
+{"timestamp": "2025-11-19T23:20:22.835737", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=153"}
+{"timestamp": "2025-11-19T23:20:22.900828", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=154"}
+{"timestamp": "2025-11-19T23:20:23.027584", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=156"}
+{"timestamp": "2025-11-19T23:20:23.878453", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=169"}
+{"timestamp": "2025-11-19T23:20:23.941281", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 298, "message": "\ud83d\udd0d SIGNAUX: i=170, 1 g\u00e9n\u00e9r\u00e9s"}
+{"timestamp": "2025-11-19T23:20:23.941464", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 303, "message": "\ud83d\udd0d FILTR\u00c9S: i=170, 1 apr\u00e8s filtrage"}
+{"timestamp": "2025-11-19T23:20:23.941545", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=170"}
+{"timestamp": "2025-11-19T23:20:24.005186", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=171"}
+{"timestamp": "2025-11-19T23:20:24.071642", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=172"}
+{"timestamp": "2025-11-19T23:20:24.141870", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=173"}
+{"timestamp": "2025-11-19T23:20:24.211151", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=174"}
+{"timestamp": "2025-11-19T23:20:24.277698", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=175"}
+{"timestamp": "2025-11-19T23:20:24.346200", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=176"}
+{"timestamp": "2025-11-19T23:20:24.417211", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=177"}
+{"timestamp": "2025-11-19T23:20:24.515333", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=178"}
+{"timestamp": "2025-11-19T23:20:24.596535", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=179"}
+{"timestamp": "2025-11-19T23:20:24.673806", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 298, "message": "\ud83d\udd0d SIGNAUX: i=180, 1 g\u00e9n\u00e9r\u00e9s"}
+{"timestamp": "2025-11-19T23:20:24.674155", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 303, "message": "\ud83d\udd0d FILTR\u00c9S: i=180, 1 apr\u00e8s filtrage"}
+{"timestamp": "2025-11-19T23:20:24.674300", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=180"}
+{"timestamp": "2025-11-19T23:20:24.750326", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=181"}
+{"timestamp": "2025-11-19T23:20:24.835781", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=182"}
+{"timestamp": "2025-11-19T23:20:25.722705", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=193"}
+{"timestamp": "2025-11-19T23:20:25.801416", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=194"}
+{"timestamp": "2025-11-19T23:20:25.878330", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=195"}
+{"timestamp": "2025-11-19T23:20:25.967572", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=196"}
+{"timestamp": "2025-11-19T23:20:26.040093", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=197"}
+{"timestamp": "2025-11-19T23:20:26.112805", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=198"}
+{"timestamp": "2025-11-19T23:20:26.186104", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=199"}
+{"timestamp": "2025-11-19T23:20:26.187643", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 241, "message": "\ud83d\udcca Progress: 40.8% | Date: 2025-11-13 22:00 | Prix: $99850.00 | Balance: $196.55"}
+{"timestamp": "2025-11-19T23:20:26.259311", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 298, "message": "\ud83d\udd0d SIGNAUX: i=200, 1 g\u00e9n\u00e9r\u00e9s"}
+{"timestamp": "2025-11-19T23:20:26.259594", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 303, "message": "\ud83d\udd0d FILTR\u00c9S: i=200, 1 apr\u00e8s filtrage"}
+{"timestamp": "2025-11-19T23:20:26.259756", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=200"}
+{"timestamp": "2025-11-19T23:20:26.362667", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=201"}
+{"timestamp": "2025-11-19T23:20:26.448371", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=202"}
+{"timestamp": "2025-11-19T23:20:26.536779", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=203"}
+{"timestamp": "2025-11-19T23:20:26.611193", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=204"}
+{"timestamp": "2025-11-19T23:20:26.682036", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=205"}
+{"timestamp": "2025-11-19T23:20:26.752595", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=206"}
+{"timestamp": "2025-11-19T23:20:26.841807", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=207"}
+{"timestamp": "2025-11-19T23:20:26.939376", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=208"}
+{"timestamp": "2025-11-19T23:20:27.010931", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=209"}
+{"timestamp": "2025-11-19T23:20:27.081034", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 298, "message": "\ud83d\udd0d SIGNAUX: i=210, 1 g\u00e9n\u00e9r\u00e9s"}
+{"timestamp": "2025-11-19T23:20:27.081359", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 303, "message": "\ud83d\udd0d FILTR\u00c9S: i=210, 1 apr\u00e8s filtrage"}
+{"timestamp": "2025-11-19T23:20:27.081503", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=210"}
+{"timestamp": "2025-11-19T23:20:27.154996", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=211"}
+{"timestamp": "2025-11-19T23:20:27.229880", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=212"}
+{"timestamp": "2025-11-19T23:20:27.304175", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=213"}
+{"timestamp": "2025-11-19T23:20:27.374983", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=214"}
+{"timestamp": "2025-11-19T23:20:27.444618", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=215"}
+{"timestamp": "2025-11-19T23:20:27.516221", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=216"}
+{"timestamp": "2025-11-19T23:20:27.586347", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=217"}
+{"timestamp": "2025-11-19T23:20:27.657542", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=218"}
+{"timestamp": "2025-11-19T23:20:27.727160", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=219"}
+{"timestamp": "2025-11-19T23:20:27.803038", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 298, "message": "\ud83d\udd0d SIGNAUX: i=220, 1 g\u00e9n\u00e9r\u00e9s"}
+{"timestamp": "2025-11-19T23:20:27.803342", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 303, "message": "\ud83d\udd0d FILTR\u00c9S: i=220, 1 apr\u00e8s filtrage"}
+{"timestamp": "2025-11-19T23:20:27.803467", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=220"}
+{"timestamp": "2025-11-19T23:20:27.879491", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=221"}
+{"timestamp": "2025-11-19T23:20:27.953768", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=222"}
+{"timestamp": "2025-11-19T23:20:28.027471", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=223"}
+{"timestamp": "2025-11-19T23:20:28.102188", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=224"}
+{"timestamp": "2025-11-19T23:20:28.181727", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=225"}
+{"timestamp": "2025-11-19T23:20:28.253937", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=226"}
+{"timestamp": "2025-11-19T23:20:28.324213", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=227"}
+{"timestamp": "2025-11-19T23:20:28.395808", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=228"}
+{"timestamp": "2025-11-19T23:20:28.469826", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=229"}
+{"timestamp": "2025-11-19T23:20:28.542504", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 298, "message": "\ud83d\udd0d SIGNAUX: i=230, 1 g\u00e9n\u00e9r\u00e9s"}
+{"timestamp": "2025-11-19T23:20:28.542697", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 303, "message": "\ud83d\udd0d FILTR\u00c9S: i=230, 1 apr\u00e8s filtrage"}
+{"timestamp": "2025-11-19T23:20:28.542783", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=230"}
+{"timestamp": "2025-11-19T23:20:28.615432", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=231"}
+{"timestamp": "2025-11-19T23:20:28.687170", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=232"}
+{"timestamp": "2025-11-19T23:20:28.757081", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=233"}
+{"timestamp": "2025-11-19T23:20:28.829806", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=234"}
+{"timestamp": "2025-11-19T23:20:28.900546", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=235"}
+{"timestamp": "2025-11-19T23:20:28.970965", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=236"}
+{"timestamp": "2025-11-19T23:20:29.039437", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=237"}
+{"timestamp": "2025-11-19T23:20:29.108763", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=238"}
+{"timestamp": "2025-11-19T23:20:29.179554", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=239"}
+{"timestamp": "2025-11-19T23:20:29.250921", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 298, "message": "\ud83d\udd0d SIGNAUX: i=240, 1 g\u00e9n\u00e9r\u00e9s"}
+{"timestamp": "2025-11-19T23:20:29.251217", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 303, "message": "\ud83d\udd0d FILTR\u00c9S: i=240, 1 apr\u00e8s filtrage"}
+{"timestamp": "2025-11-19T23:20:29.251350", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=240"}
+{"timestamp": "2025-11-19T23:20:29.322001", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=241"}
+{"timestamp": "2025-11-19T23:20:29.394957", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=242"}
+{"timestamp": "2025-11-19T23:20:29.467524", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=243"}
+{"timestamp": "2025-11-19T23:20:29.538711", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=244"}
+{"timestamp": "2025-11-19T23:20:29.610312", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=245"}
+{"timestamp": "2025-11-19T23:20:29.681508", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=246"}
+{"timestamp": "2025-11-19T23:20:29.751345", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=247"}
+{"timestamp": "2025-11-19T23:20:29.822054", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=248"}
+{"timestamp": "2025-11-19T23:20:29.891199", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=249"}
+{"timestamp": "2025-11-19T23:20:29.959425", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 298, "message": "\ud83d\udd0d SIGNAUX: i=250, 1 g\u00e9n\u00e9r\u00e9s"}
+{"timestamp": "2025-11-19T23:20:29.959612", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 303, "message": "\ud83d\udd0d FILTR\u00c9S: i=250, 1 apr\u00e8s filtrage"}
+{"timestamp": "2025-11-19T23:20:29.959696", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=250"}
+{"timestamp": "2025-11-19T23:20:30.030088", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=251"}
+{"timestamp": "2025-11-19T23:20:30.102787", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=252"}
+{"timestamp": "2025-11-19T23:20:30.173471", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=253"}
+{"timestamp": "2025-11-19T23:20:30.245541", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=254"}
+{"timestamp": "2025-11-19T23:20:30.319205", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=255"}
+{"timestamp": "2025-11-19T23:20:30.392978", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=256"}
+{"timestamp": "2025-11-19T23:20:30.465791", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=257"}
+{"timestamp": "2025-11-19T23:20:30.539317", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=258"}
+{"timestamp": "2025-11-19T23:20:30.751532", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=261"}
+{"timestamp": "2025-11-19T23:20:30.824910", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=262"}
+{"timestamp": "2025-11-19T23:20:30.899972", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=263"}
+{"timestamp": "2025-11-19T23:20:30.971519", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=264"}
+{"timestamp": "2025-11-19T23:20:31.040815", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=265"}
+{"timestamp": "2025-11-19T23:20:31.112278", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=266"}
+{"timestamp": "2025-11-19T23:20:31.186544", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=267"}
+{"timestamp": "2025-11-19T23:20:31.259455", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=268"}
+{"timestamp": "2025-11-19T23:20:31.333848", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=269"}
+{"timestamp": "2025-11-19T23:20:31.403139", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 298, "message": "\ud83d\udd0d SIGNAUX: i=270, 1 g\u00e9n\u00e9r\u00e9s"}
+{"timestamp": "2025-11-19T23:20:31.403327", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 303, "message": "\ud83d\udd0d FILTR\u00c9S: i=270, 1 apr\u00e8s filtrage"}
+{"timestamp": "2025-11-19T23:20:31.403411", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=270"}
+{"timestamp": "2025-11-19T23:20:31.474440", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=271"}
+{"timestamp": "2025-11-19T23:20:31.547987", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=272"}
+{"timestamp": "2025-11-19T23:20:31.619121", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=273"}
+{"timestamp": "2025-11-19T23:20:31.691650", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=274"}
+{"timestamp": "2025-11-19T23:20:31.762079", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=275"}
+{"timestamp": "2025-11-19T23:20:31.834065", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=276"}
+{"timestamp": "2025-11-19T23:20:31.906295", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=277"}
+{"timestamp": "2025-11-19T23:20:31.977081", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=278"}
+{"timestamp": "2025-11-19T23:20:32.046149", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=279"}
+{"timestamp": "2025-11-19T23:20:32.120770", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 298, "message": "\ud83d\udd0d SIGNAUX: i=280, 1 g\u00e9n\u00e9r\u00e9s"}
+{"timestamp": "2025-11-19T23:20:32.121094", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 303, "message": "\ud83d\udd0d FILTR\u00c9S: i=280, 1 apr\u00e8s filtrage"}
+{"timestamp": "2025-11-19T23:20:32.121241", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=280"}
+{"timestamp": "2025-11-19T23:20:32.551754", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=286"}
+{"timestamp": "2025-11-19T23:20:32.622293", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=287"}
+{"timestamp": "2025-11-19T23:20:32.695005", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=288"}
+{"timestamp": "2025-11-19T23:20:32.768062", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=289"}
+{"timestamp": "2025-11-19T23:20:32.842204", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 298, "message": "\ud83d\udd0d SIGNAUX: i=290, 1 g\u00e9n\u00e9r\u00e9s"}
+{"timestamp": "2025-11-19T23:20:32.842405", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 303, "message": "\ud83d\udd0d FILTR\u00c9S: i=290, 1 apr\u00e8s filtrage"}
+{"timestamp": "2025-11-19T23:20:32.842494", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=290"}
+{"timestamp": "2025-11-19T23:20:32.915451", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=291"}
+{"timestamp": "2025-11-19T23:20:32.988007", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=292"}
+{"timestamp": "2025-11-19T23:20:33.063362", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=293"}
+{"timestamp": "2025-11-19T23:20:33.138057", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=294"}
+{"timestamp": "2025-11-19T23:20:33.210017", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=295"}
+{"timestamp": "2025-11-19T23:20:33.280324", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=296"}
+{"timestamp": "2025-11-19T23:20:33.353555", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=297"}
+{"timestamp": "2025-11-19T23:20:33.424778", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=298"}
+{"timestamp": "2025-11-19T23:20:33.495265", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=299"}
+{"timestamp": "2025-11-19T23:20:33.496975", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 241, "message": "\ud83d\udcca Progress: 81.6% | Date: 2025-11-18 02:00 | Prix: $90839.05 | Balance: $196.55"}
+{"timestamp": "2025-11-19T23:20:33.565083", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 298, "message": "\ud83d\udd0d SIGNAUX: i=300, 1 g\u00e9n\u00e9r\u00e9s"}
+{"timestamp": "2025-11-19T23:20:33.565377", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 303, "message": "\ud83d\udd0d FILTR\u00c9S: i=300, 1 apr\u00e8s filtrage"}
+{"timestamp": "2025-11-19T23:20:33.565478", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=300"}
+{"timestamp": "2025-11-19T23:20:33.638019", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=301"}
+{"timestamp": "2025-11-19T23:20:33.714483", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=302"}
+{"timestamp": "2025-11-19T23:20:33.787534", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=303"}
+{"timestamp": "2025-11-19T23:20:33.859448", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=304"}
+{"timestamp": "2025-11-19T23:20:33.931588", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=305"}
+{"timestamp": "2025-11-19T23:20:34.007020", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=306"}
+{"timestamp": "2025-11-19T23:20:34.086149", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=307"}
+{"timestamp": "2025-11-19T23:20:34.164431", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=308"}
+{"timestamp": "2025-11-19T23:20:34.239902", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=309"}
+{"timestamp": "2025-11-19T23:20:34.315069", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 298, "message": "\ud83d\udd0d SIGNAUX: i=310, 1 g\u00e9n\u00e9r\u00e9s"}
+{"timestamp": "2025-11-19T23:20:34.315257", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 303, "message": "\ud83d\udd0d FILTR\u00c9S: i=310, 1 apr\u00e8s filtrage"}
+{"timestamp": "2025-11-19T23:20:34.315352", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=310"}
+{"timestamp": "2025-11-19T23:20:34.390864", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=311"}
+{"timestamp": "2025-11-19T23:20:34.468541", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=312"}
+{"timestamp": "2025-11-19T23:20:34.545562", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=313"}
+{"timestamp": "2025-11-19T23:20:34.620951", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=314"}
+{"timestamp": "2025-11-19T23:20:34.695206", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=315"}
+{"timestamp": "2025-11-19T23:20:34.766158", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=316"}
+{"timestamp": "2025-11-19T23:20:34.836791", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=317"}
+{"timestamp": "2025-11-19T23:20:34.906317", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=318"}
+{"timestamp": "2025-11-19T23:20:34.976150", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=319"}
+{"timestamp": "2025-11-19T23:20:35.044633", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 298, "message": "\ud83d\udd0d SIGNAUX: i=320, 1 g\u00e9n\u00e9r\u00e9s"}
+{"timestamp": "2025-11-19T23:20:35.044881", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 303, "message": "\ud83d\udd0d FILTR\u00c9S: i=320, 1 apr\u00e8s filtrage"}
+{"timestamp": "2025-11-19T23:20:35.045037", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=320"}
+{"timestamp": "2025-11-19T23:20:35.153074", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=321"}
+{"timestamp": "2025-11-19T23:20:35.238180", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=322"}
+{"timestamp": "2025-11-19T23:20:35.318511", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=323"}
+{"timestamp": "2025-11-19T23:20:35.393185", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=324"}
+{"timestamp": "2025-11-19T23:20:35.468614", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=325"}
+{"timestamp": "2025-11-19T23:20:35.543854", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=326"}
+{"timestamp": "2025-11-19T23:20:35.616205", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=327"}
+{"timestamp": "2025-11-19T23:20:35.687315", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=328"}
+{"timestamp": "2025-11-19T23:20:35.765643", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=329"}
+{"timestamp": "2025-11-19T23:20:35.866645", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 298, "message": "\ud83d\udd0d SIGNAUX: i=330, 1 g\u00e9n\u00e9r\u00e9s"}
+{"timestamp": "2025-11-19T23:20:35.866921", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 303, "message": "\ud83d\udd0d FILTR\u00c9S: i=330, 1 apr\u00e8s filtrage"}
+{"timestamp": "2025-11-19T23:20:35.867058", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=330"}
+{"timestamp": "2025-11-19T23:20:35.947872", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=331"}
+{"timestamp": "2025-11-19T23:20:36.021930", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=332"}
+{"timestamp": "2025-11-19T23:20:36.092581", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=333"}
+{"timestamp": "2025-11-19T23:20:36.164060", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=334"}
+{"timestamp": "2025-11-19T23:20:36.239970", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=335"}
+{"timestamp": "2025-11-19T23:20:36.318045", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=336"}
+{"timestamp": "2025-11-19T23:20:36.390684", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=337"}
+{"timestamp": "2025-11-19T23:20:36.464467", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=338"}
+{"timestamp": "2025-11-19T23:20:36.537148", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=339"}
+{"timestamp": "2025-11-19T23:20:36.610574", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 298, "message": "\ud83d\udd0d SIGNAUX: i=340, 1 g\u00e9n\u00e9r\u00e9s"}
+{"timestamp": "2025-11-19T23:20:36.610837", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 303, "message": "\ud83d\udd0d FILTR\u00c9S: i=340, 1 apr\u00e8s filtrage"}
+{"timestamp": "2025-11-19T23:20:36.611036", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=340"}
+{"timestamp": "2025-11-19T23:20:36.684135", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=341"}
+{"timestamp": "2025-11-19T23:20:36.761912", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=342"}
+{"timestamp": "2025-11-19T23:20:36.835809", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=343"}
+{"timestamp": "2025-11-19T23:20:36.910511", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 312, "message": "\ud83c\udfaf EX\u00c9CUTION SIGNAL: BTC/USDT BUY @ i=344"}
+{"timestamp": "2025-11-19T23:20:36.911005", "level": "INFO", "module": "ReplayBacktest", "function": "run_replay", "line": 334, "message": "\ud83c\udfc1 Replay termin\u00e9"}
+{"timestamp": "2025-11-19T23:20:36.911096", "level": "INFO", "module": "ReplayBacktest", "function": "_print_results", "line": 340, "message": "======================================================================"}
+{"timestamp": "2025-11-19T23:20:36.911174", "level": "INFO", "module": "ReplayBacktest", "function": "_print_results", "line": 341, "message": "\ud83d\udcca R\u00c9SULTATS DU REPLAY BACKTEST"}
+{"timestamp": "2025-11-19T23:20:36.911248", "level": "INFO", "module": "ReplayBacktest", "function": "_print_results", "line": 342, "message": "======================================================================"}
+{"timestamp": "2025-11-19T23:20:36.911351", "level": "INFO", "module": "ReplayBacktest", "function": "_print_results", "line": 352, "message": "\ud83d\udcb0 Balance initiale: $300.00"}
+{"timestamp": "2025-11-19T23:20:36.911437", "level": "INFO", "module": "ReplayBacktest", "function": "_print_results", "line": 353, "message": "\ud83d\udcb0 Balance finale: $196.55"}
+{"timestamp": "2025-11-19T23:20:36.911516", "level": "INFO", "module": "ReplayBacktest", "function": "_print_results", "line": 354, "message": "\ud83d\udcc8 PnL Total: $-103.45 (-34.48%)"}
+{"timestamp": "2025-11-19T23:20:36.911590", "level": "INFO", "module": "ReplayBacktest", "function": "_print_results", "line": 355, "message": ""}
+{"timestamp": "2025-11-19T23:20:36.911905", "level": "INFO", "module": "ReplayBacktest", "function": "_print_results", "line": 368, "message": "\ud83d\udcca Total trades: 0"}
+{"timestamp": "2025-11-19T23:20:36.912002", "level": "INFO", "module": "ReplayBacktest", "function": "_print_results", "line": 369, "message": "\u2705 Winning: 0"}
+{"timestamp": "2025-11-19T23:20:36.912081", "level": "INFO", "module": "ReplayBacktest", "function": "_print_results", "line": 370, "message": "\u274c Losing: 0"}
+{"timestamp": "2025-11-19T23:20:36.912159", "level": "INFO", "module": "ReplayBacktest", "function": "_print_results", "line": 371, "message": "\ud83c\udfaf Win Rate: 0.00%"}
+{"timestamp": "2025-11-19T23:20:36.912234", "level": "INFO", "module": "ReplayBacktest", "function": "_print_results", "line": 372, "message": "\ud83d\udcb5 Total PnL: $0.00"}
+{"timestamp": "2025-11-19T23:20:36.912305", "level": "INFO", "module": "ReplayBacktest", "function": "_print_results", "line": 374, "message": "======================================================================"}

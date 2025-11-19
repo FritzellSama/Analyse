@@ -1,0 +1,351 @@
+{"timestamp": "2025-11-19T23:20:18.948655", "level": "INFO", "module": "StrategyManager", "function": "_initialize_strategies", "line": 52, "message": "\u2705 Ichimoku Scalping activ\u00e9e"}
+{"timestamp": "2025-11-19T23:20:18.990612", "level": "INFO", "module": "StrategyManager", "function": "_initialize_strategies", "line": 59, "message": "\u2705 Grid Trading activ\u00e9e"}
+{"timestamp": "2025-11-19T23:20:19.040592", "level": "INFO", "module": "StrategyManager", "function": "_initialize_strategies", "line": 66, "message": "\u2705 DCA Bot activ\u00e9"}
+{"timestamp": "2025-11-19T23:20:19.040770", "level": "INFO", "module": "StrategyManager", "function": "_initialize_strategies", "line": 85, "message": "\ud83d\udcca Strat\u00e9gies: ['ichimoku_scalping', 'grid_trading', 'dca_bot']"}
+{"timestamp": "2025-11-19T23:20:19.040875", "level": "INFO", "module": "StrategyManager", "function": "_initialize_strategies", "line": 86, "message": "\ud83d\udcb0 Allocations: {'ichimoku_scalping': 0.3333333333333333, 'grid_trading': 0.3333333333333333, 'dca_bot': 0.3333333333333333}"}
+{"timestamp": "2025-11-19T23:20:19.445941", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:19.446358", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.80 score=0.27"}
+{"timestamp": "2025-11-19T23:20:22.087503", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:22.087656", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:22.149904", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:22.150079", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:22.286257", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:22.286389", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:22.368194", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:22.368379", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:22.437815", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:22.437920", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:22.504189", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:22.504297", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:22.570207", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:22.570316", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:22.636691", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:22.636932", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:22.703923", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:22.704029", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:22.768856", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:22.768963", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:22.835462", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:22.835590", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:22.900531", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:22.900726", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:23.027355", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:23.027477", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:23.878254", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:23.878360", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:23.941173", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:23.941378", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:24.004916", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:24.005084", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:24.071348", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:24.071503", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:24.141568", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:24.141744", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:24.210951", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:24.211056", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:24.277492", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:24.277599", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:24.345996", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:24.346103", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:24.416781", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:24.416980", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:24.514841", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:24.515094", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:24.596148", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:24.596350", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:24.673604", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:24.673968", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:24.750044", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:24.750209", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:24.835341", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:24.835579", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:25.722486", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:25.722595", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:25.801021", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:25.801221", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:25.878055", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:25.878200", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:25.967362", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:25.967471", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:26.039888", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:26.039995", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:26.112601", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:26.112708", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:26.185810", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:26.185983", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:26.259143", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:26.259431", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:26.362338", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:26.362516", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:26.448135", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:26.448260", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:26.536311", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:26.536488", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:26.610844", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:26.611030", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:26.681755", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:26.681915", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:26.752335", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:26.752475", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:26.841464", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:26.841637", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:26.939098", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:26.939253", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:27.010655", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:27.010811", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.95 score=0.32"}
+{"timestamp": "2025-11-19T23:20:27.080894", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:27.081205", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:27.154789", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:27.154897", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.95 score=0.32"}
+{"timestamp": "2025-11-19T23:20:27.229491", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:27.229695", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.95 score=0.32"}
+{"timestamp": "2025-11-19T23:20:27.303935", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:27.304059", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.95 score=0.32"}
+{"timestamp": "2025-11-19T23:20:27.374684", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:27.374840", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.95 score=0.32"}
+{"timestamp": "2025-11-19T23:20:27.444319", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:27.444448", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.95 score=0.32"}
+{"timestamp": "2025-11-19T23:20:27.515979", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:27.516104", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:27.586111", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:27.586233", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:27.657285", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:27.657416", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:27.726859", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:27.726994", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:27.802907", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:27.803213", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:27.879276", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:27.879388", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:27.953514", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:27.953641", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:28.027226", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:28.027348", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:28.101952", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:28.102073", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:28.181491", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:28.181620", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:28.253647", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:28.253809", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:28.323937", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:28.324047", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:28.395584", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:28.395706", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:28.469603", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:28.469719", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:28.542396", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:28.542605", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:28.615116", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:28.615277", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:28.686888", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:28.687030", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:28.756860", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:28.756967", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:28.829575", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:28.829705", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:28.900319", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:28.900430", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:28.970661", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:28.970800", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:29.039232", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:29.039339", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:29.108524", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:29.108631", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:29.179347", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:29.179454", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:29.250777", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:29.251094", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:29.321683", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:29.321857", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:29.394639", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:29.394830", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:29.467309", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:29.467421", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:29.538477", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:29.538587", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:29.610004", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:29.610162", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:29.681290", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:29.681409", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:29.751136", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:29.751243", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:29.821851", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:29.821957", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:29.890888", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:29.891047", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:29.959321", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:29.959524", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:30.029753", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:30.029903", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:30.102581", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:30.102689", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:30.173161", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:30.173298", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:30.245252", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:30.245382", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:30.318874", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:30.319052", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:30.392613", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:30.392815", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:30.465586", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:30.465693", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:30.539019", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:30.539153", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:30.751242", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:30.751382", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:30.824570", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:30.824739", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:30.899685", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:30.899846", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:30.971280", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:30.971390", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:31.040615", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:31.040721", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:31.111961", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:31.112145", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:31.186320", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:31.186438", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:31.259131", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:31.259270", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:31.333539", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:31.333703", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:31.403032", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:31.403238", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:31.474237", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:31.474343", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.95 score=0.32"}
+{"timestamp": "2025-11-19T23:20:31.547782", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:31.547889", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:31.618836", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:31.618996", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:31.691328", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:31.691463", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:31.761784", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:31.761959", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:31.833857", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:31.833968", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:31.906089", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:31.906197", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:31.976795", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:31.976925", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:32.045630", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:32.045859", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:32.120616", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:32.120898", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:32.551377", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:32.551571", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:32.622074", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:32.622187", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:32.694679", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:32.694834", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:32.767768", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:32.767927", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:32.842092", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:32.842309", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:32.915221", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:32.915341", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:32.987661", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:32.987852", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:33.063046", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:33.063211", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.95 score=0.32"}
+{"timestamp": "2025-11-19T23:20:33.137728", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:33.137872", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:33.209716", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:33.209872", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:33.280119", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:33.280226", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:33.353245", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:33.353407", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:33.424574", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:33.424681", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:33.494983", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:33.495142", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:33.564923", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:33.565228", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.95 score=0.32"}
+{"timestamp": "2025-11-19T23:20:33.637814", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:33.637922", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.95 score=0.32"}
+{"timestamp": "2025-11-19T23:20:33.714282", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:33.714387", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.95 score=0.32"}
+{"timestamp": "2025-11-19T23:20:33.787318", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:33.787432", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.95 score=0.32"}
+{"timestamp": "2025-11-19T23:20:33.859234", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:33.859347", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.95 score=0.32"}
+{"timestamp": "2025-11-19T23:20:33.931281", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:33.931454", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:34.006652", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:34.006878", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:34.085834", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:34.085997", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:34.164059", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:34.164258", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:34.239672", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:34.239784", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:34.314965", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:34.315168", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:34.390640", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:34.390757", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:34.468225", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:34.468392", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:34.545340", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:34.545455", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:34.620723", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:34.620843", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:34.694917", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:34.695076", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:34.765878", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:34.766032", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:34.836587", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:34.836693", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:34.906113", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:34.906218", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:34.975862", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:34.976027", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:35.044450", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:35.044772", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:35.118195", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:35.152839", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:35.237904", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:35.238052", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:35.318235", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:35.318377", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:35.392936", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:35.393085", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:35.468405", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:35.468513", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:35.543636", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:35.543754", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:35.615915", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:35.616049", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:35.687022", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:35.687150", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:35.765339", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:35.765511", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:35.866481", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:35.866799", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:35.947626", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:35.947763", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:36.021693", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:36.021827", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:36.092271", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:36.092429", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:36.163769", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:36.163944", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:36.239680", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:36.239840", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:36.317717", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:36.317890", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}
+{"timestamp": "2025-11-19T23:20:36.390459", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:36.390577", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:36.464255", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:36.464365", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:36.536761", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:36.536937", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:36.610378", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:36.610703", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:36.683908", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:36.684027", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.95 score=0.32"}
+{"timestamp": "2025-11-19T23:20:36.761705", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:36.761813", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:36.835594", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:36.835706", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.90 score=0.30"}
+{"timestamp": "2025-11-19T23:20:36.910297", "level": "INFO", "module": "StrategyManager", "function": "generate_all_signals", "line": 106, "message": "\ud83d\udcca dca_bot: 1 signaux"}
+{"timestamp": "2025-11-19T23:20:36.910409", "level": "INFO", "module": "StrategyManager", "function": "_classic_selection", "line": 250, "message": "\u2705 Signal retenu: dca_bot BUY conf=0.85 score=0.28"}

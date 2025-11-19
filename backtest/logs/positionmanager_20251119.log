@@ -1,0 +1,2 @@
+{"timestamp": "2025-11-19T23:20:19.188742", "level": "INFO", "module": "PositionManager", "function": "info", "line": 191, "message": "\u2705 Position Manager initialis\u00e9 (thread-safe)"}
+{"timestamp": "2025-11-19T23:20:19.452227", "level": "INFO", "module": "PositionManager", "function": "trade_opened", "line": 237, "message": "\ud83d\udfe2 LONG BTC/USDT | Size: 0.001000 | Price: $103343.96 | Order: VIRTUAL_1"}
