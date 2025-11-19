@@ -50,7 +50,9 @@ class PositionManager:
         self.losing_trades = 0
         self.total_pnl = 0.0
 
-        self.logger.info("✅ Position Manager initialisé (thread-safe)")
+        self.logger.info(f"✅ Position Manager initialisé (thread-safe)")
+        self.logger.info(f"📊 Max positions simultanées: {self.max_positions}")
+        self.logger.info(f"📊 Max positions même direction: {self.max_same_direction}")
     
     @synchronized()
     def open_position(

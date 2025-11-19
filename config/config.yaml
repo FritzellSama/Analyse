@@ -88,8 +88,8 @@ risk:
   max_risk_per_week_percent: 15.0  # 15% max par semaine
   
   # Position limits
-  max_positions_simultaneous: 6
-  max_positions_same_direction: 2
+  max_positions_simultaneous: 40
+  max_positions_same_direction: 20
   max_correlation: 0.7  # Éviter positions trop corrélées
   
   # Daily limits
