@@ -1,0 +1,590 @@
+# ============================================================================
+# QUANTUM TRADER PRO - Configuration Master
+# Production-Ready Trading Bot
+# ============================================================================
+
+# ============================================================================
+# EXCHANGE CONFIGURATION
+# ============================================================================
+exchange:
+  primary:
+    name: binance
+    testnet: true  # false pour production réelle
+    rate_limit_buffer: 0.1  # 10% marge sécurité
+    timeout_seconds: 30
+    retry_attempts: 3
+    reconnect_delay_seconds: 5
+  
+  # Multi-exchange arbitrage (optionnel)
+  secondary:
+    enabled: false
+    exchanges:
+      - bybit
+      - okx
+
+# ============================================================================
+# TRADING PAIRS
+# ============================================================================
+symbols:
+  primary: BTC/USDT
+  
+  # Pairs additionnelles (multi-pair trading)
+  watchlist:
+    - ETH/USDT
+    - SOL/USDT
+    - BNB/USDT
+  
+  # Filtres qualité
+  filters:
+    min_volume_24h: 100000000  # $100M volume minimum
+    max_spread_percent: 0.2
+    min_liquidity: 1000000
+
+# ============================================================================
+# TIMEFRAMES
+# ============================================================================
+timeframes:
+  # Analyse multi-timeframe
+  trend: 1h           # Tendance globale
+  signal: 5m          # Signaux entrée/sortie
+  micro: 1m           # Exécution fine
+  
+  # Lookback periods
+  lookback:
+    short: 100        # Indicateurs courts
+    medium: 500       # Indicateurs moyens
+    long: 1000        # Indicateurs longs
+
+# ============================================================================
+# CAPITAL & POSITION MANAGEMENT
+# ============================================================================
+capital:
+  initial: 300
+  min_balance_to_trade: 200
+  reserve_percent: 10  # 10% en réserve
+  
+  # Dynamic position sizing
+  position_sizing:
+    method: kelly_criterion  # kelly_criterion, fixed_percent, volatility_based
+    kelly_fraction: 0.25     # 25% du Kelly optimal (conservative)
+    min_position_size: 0.001  # BTC
+    max_position_size: 0.05   # BTC
+    decimals: 4
+    
+    # Scaling in/out
+    scaling:
+      enabled: true
+      entry_splits: 3        # Entrée en 3 fois
+      exit_splits: 3         # Sortie en 3 fois
+      split_interval_bars: 2 # 2 bougies entre chaque
+
+# ============================================================================
+# RISK MANAGEMENT (CRITIQUE!)
+# ============================================================================
+risk:
+  # Risk per trade
+  max_risk_per_trade_percent: 1.0  # 1% max par trade
+  max_risk_per_day_percent: 5.0    # 5% max par jour
+  max_risk_per_week_percent: 15.0  # 15% max par semaine
+  
+  # Position limits
+  max_positions_simultaneous: 6
+  max_positions_same_direction: 2
+  max_correlation: 0.7  # Éviter positions trop corrélées
+  
+  # Daily limits
+  max_daily_trades: 150
+  max_consecutive_losses: 5
+  max_daily_loss_percent: 5.0  # 5% max daily loss before stopping
+  max_daily_loss_stop: true  # Stop trading si max loss atteint
+
+  # Stop Loss
+  stop_loss:
+    method: atr_based  # atr_based, fixed_percent, support_resistance
+    atr_multiplier: 1.5
+    fixed_percent: 2.0
+    trailing:
+      enabled: true
+      activation_profit_atr: 0.5
+      breakeven_atr_trigger: 1.0
+      trail_distance_atr: 0.3
+      step_atr: 0.1
+  
+  # Take Profit
+  take_profit:
+    method: multi_level  # multi_level, atr_based, risk_reward
+    levels:
+      - percent: 50    # 50% position
+        multiplier: 1.5  # 1.5x risk (TP1)
+      - percent: 30    # 30% position
+        multiplier: 2.5  # 2.5x risk (TP2)
+      - percent: 20    # 20% position
+        multiplier: 4.0  # 4x risk (TP3 - moonshot)
+  
+  # Circuit Breakers
+  circuit_breakers:
+    enabled: true
+    max_drawdown_percent: 8.0
+    consecutive_losses_threshold: 5
+    pause_duration_minutes: 60
+    volatility_threshold: 3.0  # Pause si volatilité >3x normale
+
+# ============================================================================
+# STRATEGIES CONFIGURATION
+# ============================================================================
+strategies:
+  # Strategy 1: Ichimoku + RSI/BB Scalping
+  ichimoku_scalping:
+    enabled: true
+    weight: 0.25  # 25% capital allocation
+    
+    ichimoku:
+      tenkan_period: 9
+      kijun_period: 26
+      senkou_span_b_period: 52
+      displacement: 26
+      
+      filters:
+        require_price_above_cloud: true
+        require_tk_cross: true
+        min_cloud_thickness: 0.001
+        chikou_confirmation: true
+    
+    scalping:
+      rsi:
+        period: 7
+        oversold: 30
+        overbought: 70
+        divergence_detection: true
+      
+      bollinger:
+        period: 20
+        std_dev: 2.0
+        squeeze_detection: true
+      
+      volume:
+        ma_period: 20
+        min_ratio: 1.5
+        volume_profile: true
+  
+  # Strategy 2: Grid Trading
+  grid_trading:
+    enabled: true
+    weight: 0.25  # 25% capital
+    
+    grid:
+      type: geometric  # arithmetic, geometric, fibonacci
+      range_percent: 5.0
+      num_levels: 10
+      profit_per_grid: 0.5  # 0.5% par grid
+      
+      rebalancing:
+        enabled: true
+        interval_hours: 24
+        min_deviation: 2.0
+  
+  # Strategy 3: DCA Bot
+  dca_bot:
+    enabled: true
+    weight: 0.25  # 25% capital
+
+    dca:
+      interval_hours: 24
+      amount_per_interval: 10  # $10 par intervalle
+      drop_trigger_percent: 2.0  # Acheter si -2%
+      accumulation_target: 0.1  # Accumuler 0.1 BTC
+      emergency_stop_loss_percent: 10.0
+
+  # Strategy 4: ML Strategy (Unified)
+  ml_strategy:
+    enabled: false  # À activer après entraînement des modèles
+    weight: 0.25  # 25% capital (Total = 100%)
+
+    # Path vers modèles entraînés
+    models_path: ./ml_models/saved_models
+
+    # Modèles à charger (xgboost prioritaire, lstm optionnel)
+    models_to_load:
+      - xgboost
+      - ensemble
+
+    # Seuils de confiance
+    confidence_threshold: 0.7  # Source unique de vérité
+    min_agreement: 0.6  # % d'accord entre modèles (0-1)
+
+    # Risk management aligné avec risk.stop_loss
+    atr_multiplier_sl: 1.5   # Stop loss à 1.5x ATR
+    atr_multiplier_tp: 2.5   # Take profit à 2.5x ATR
+
+    # Auto-retraining
+    auto_retrain:
+      enabled: false
+      frequency_days: 7
+      min_samples: 1000
+
+
+
+# ============================================================================
+# MACHINE LEARNING
+# ============================================================================
+ml:
+  enabled: true
+  
+  # Feature Engineering
+  features:
+    technical_indicators:
+      - rsi
+      - macd
+      - bollinger_bands
+      - atr
+      - adx
+      - stochastic
+      - cci
+      - mfi
+      - sma
+
+    patterns:
+      - candlestick
+      - support_resistance
+      - trend_lines
+
+    lookback_periods:
+      short: 20
+      medium: 50
+      long: 200
+    
+    market_microstructure:
+      - order_book_imbalance
+      - bid_ask_spread
+      - volume_profile
+      - trade_intensity
+    
+    sentiment:
+      - fear_greed_index
+      - funding_rate
+      - open_interest
+    
+    time_features:
+      - hour_of_day
+      - day_of_week
+      - month
+      - is_weekend
+  
+  # Models Configuration
+  models:
+    xgboost:
+      enabled: true
+      n_estimators: 200
+      max_depth: 6
+      learning_rate: 0.1
+      objective: binary:logistic
+      
+    lstm:
+      enabled: true
+      sequence_length: 50
+      hidden_layers: [128, 64]
+      dropout: 0.2
+      epochs: 100
+      
+    ensemble:
+      enabled: true
+      method: weighted  # voting, weighted, stacking
+      weights: [0.4, 0.4, 0.2]  # XGBoost, LSTM, autres
+      min_confidence: 0.7  # Confidence minimum pour trade
+      min_agreement: 0.6   # Accord minimum entre modèles (0-1)
+  
+  # Training
+  training:
+    retrain_interval_hours: 24
+    min_samples: 1000
+    validation_split: 0.2
+    test_split: 0.1
+    
+    hyperparameter_tuning:
+      enabled: true
+      n_trials: 50
+      optimization_metric: f1_score
+  
+  # Prediction
+  prediction:
+    horizon_bars: 5  # Prédire 5 bougies
+    confidence_threshold: 0.7
+    ensemble_agreement_threshold: 0.6
+
+  meta_model:
+    enabled: false #true
+
+    # Mode de sélection:
+    selection_mode: weighted_ensemble
+
+    # Seuils
+    min_confidence: 0.6  # Confidence minimum pour accepter un signal
+    context_weight: 0.5  # 0-1: poids du contexte vs performance (0.5 = 50/50)
+
+    # Performance tracking
+    performance_window_days: 7  # Fenêtre glissante pour calculer métriques
+
+
+
+# ============================================================================
+# EXECUTION
+# ============================================================================
+execution:
+  # Order types
+  order_type: limit  # limit, market, stop_limit
+  limit_price_offset_percent: 0.05
+  
+  # Slippage
+  expected_slippage_percent: 0.05
+  max_acceptable_slippage_percent: 0.2
+  
+  # Retry logic
+  max_retries: 3
+  retry_delay_seconds: 2
+  timeout_seconds: 30
+  
+  # Smart order routing
+  sor:
+    enabled: true
+    split_large_orders: true
+    max_order_size_percent: 5  # 5% du volume
+    iceberg_orders: true
+  
+  # Post-trade analysis
+  post_trade:
+    calculate_slippage: true
+    calculate_impact: true
+    save_to_database: true
+
+# ============================================================================
+# BACKTESTING
+# ============================================================================
+backtest:
+  enabled: true
+  
+  data:
+    start_date: "2023-01-01"
+    end_date: "2024-11-08"
+    warmup_bars: 100
+    
+  simulation:
+    initial_balance: 300
+    commission_maker: 0.1  # 0.1% maker
+    commission_taker: 0.1  # 0.1% taker
+    slippage_model: realistic  # realistic, none, fixed
+    
+  analysis:
+    calculate_metrics: true
+    generate_report: true
+    save_trades: true
+    plot_equity_curve: true
+    
+    metrics:
+      - total_return
+      - cagr
+      - sharpe_ratio
+      - sortino_ratio
+      - max_drawdown
+      - win_rate
+      - profit_factor
+      - avg_trade_duration
+      - total_trades
+      - avg_win
+      - avg_loss
+      - expectancy
+  
+  optimization:
+    enabled: false
+    method: walk_forward  # grid_search, random_search, walk_forward
+    parameters:
+      - rsi_period: [5, 7, 9, 14]
+      - bb_period: [15, 20, 25]
+      - risk_percent: [0.5, 1.0, 1.5, 2.0]
+
+# ============================================================================
+# LIVE TRADING
+# ============================================================================
+live:
+  # Execution
+  check_interval_seconds: 10
+  order_check_interval_seconds: 5
+  
+  # Safety
+  auto_restart_on_error: true
+  max_consecutive_errors: 5
+  health_check_interval_seconds: 60
+  
+  # Warmup
+  warmup_bars_required: 100
+  initial_data_fetch: true
+  
+  # State persistence
+  save_state_interval_seconds: 300
+  state_file: data/state.json
+
+
+# ============================================================================
+# LOGGING
+# ============================================================================
+logging:
+  level: INFO  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  
+  # File logging
+  save_to_file: true
+  log_directory: logs
+  max_file_size_mb: 10
+  backup_count: 10
+  
+  # Console output
+  console_output: true
+  colored_output: true
+  
+  # Log rotation
+  rotation: daily  # daily, weekly, size-based
+  
+  # Structured logging
+  format: json  # json, text
+  include_timestamp: true
+  include_module: true
+  include_function: true
+
+# ============================================================================
+# DATABASE
+# ============================================================================
+database:
+  enabled: true
+  url: sqlite:///./data/quantum_trader.db
+  
+  # Tables
+  tables:
+    trades: true
+    signals: true
+    metrics: true
+    errors: true
+    
+  # Backup
+  auto_backup: true
+  backup_interval_hours: 24
+  backup_directory: data/backups
+
+# ============================================================================
+# PERFORMANCE OPTIMIZATION
+# ============================================================================
+performance:
+  # Parallelization
+  use_multiprocessing: true
+  num_workers: 4
+  
+  # Caching
+  cache_indicators: true
+  cache_ml_predictions: true
+  cache_ttl_seconds: 300
+  
+  # Memory management
+  max_memory_mb: 2048
+  gc_interval_seconds: 600
+
+# ============================================================================
+# TESTING & VALIDATION
+# ============================================================================
+testing:
+  # Paper trading
+  paper_trading:
+    enabled: false
+    duration_days: 14
+    compare_to_live: true
+  
+  # A/B testing
+  ab_testing:
+    enabled: false
+    variants:
+      - strategy: ichimoku_scalping
+        weight: 0.5
+      - strategy: ml_enhanced
+        weight: 0.5
+
+# ============================================================================
+# ADVANCED FEATURES
+# ============================================================================
+advanced:
+  # Market regime detection
+  regime_detection:
+    enabled: true
+    methods:
+      - hmm  # Hidden Markov Model
+      - volatility_clustering
+    adapt_strategy: true
+  
+  # Order flow analysis
+  order_flow:
+    enabled: true
+    depth_levels: 20
+    imbalance_threshold: 0.3
+  
+  # Multi-timeframe correlation
+  mtf_correlation:
+    enabled: true
+    timeframes: [1m, 5m, 15m, 1h, 4h]
+    min_correlation: 0.6
+  
+  # Portfolio optimization
+  portfolio:
+    enabled: false
+    rebalance_interval_hours: 24
+    optimization_method: mean_variance
+    target_sharpe: 2.0
+
+# ============================================================================
+# SECURITY
+# ============================================================================
+security:
+  # API keys
+  api_key_rotation: false
+  api_key_rotation_days: 90
+
+  # IP whitelisting
+  ip_whitelist: []
+
+  # Encryption
+  encrypt_sensitive_data: true
+  encryption_algorithm: AES256
+
+  # Audit trail
+  audit_logging: true
+  audit_file: logs/audit.log
+
+# ============================================================================
+# MONITORING & NOTIFICATIONS
+# ============================================================================
+monitoring:
+  # Telegram notifications
+  telegram:
+    enabled: false
+    bot_token: ""
+    chat_id: ""
+
+    # Notification types
+    notifications:
+      trade_opened: true
+      trade_closed: true
+      daily_summary: true
+      error_alerts: true
+      performance_alerts: true
+
+  # Discord webhook (optional)
+  discord:
+    enabled: false
+    webhook_url: ""
+
+  # Email alerts (optional)
+  email:
+    enabled: false
+    smtp_server: ""
+    smtp_port: 587
+    username: ""
+    password: ""
+    recipient: ""
+
+# ============================================================================
+# FIN DE CONFIGURATION
+# ============================================================================
