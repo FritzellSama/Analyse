@@ -458,9 +458,16 @@ class VirtualBinanceClient(BaseExchangeClient):
 
     def get_statistics(self) -> Dict:
         """Retourne les statistiques du backtest"""
+        # Calculer la valeur totale du portfolio (USDT + valeur BTC)
+        current_price = self.get_current_price()
+        base_value = float(self.virtual_base_balance) * current_price
+        total_portfolio_value = float(self.virtual_balance) + base_value
+
         return {
-            'final_balance': float(self.virtual_balance),
-            'final_base_balance': float(self.virtual_base_balance),
+            'final_balance': total_portfolio_value,  # Valeur totale du portfolio
+            'quote_balance': float(self.virtual_balance),  # USDT disponible
+            'final_base_balance': float(self.virtual_base_balance),  # BTC détenu
+            'base_value_in_quote': base_value,  # Valeur du BTC en USDT
             'total_orders': len(self.virtual_orders),
             'open_positions': len([p for p in self.virtual_positions if p['size'] > 0]),
             'current_timestamp': self.current_timestamp
