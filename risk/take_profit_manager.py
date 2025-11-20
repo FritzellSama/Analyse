@@ -248,6 +248,13 @@ class TakeProfitManager:
             del self.active_tps[position_id]
             self.logger.debug(f"🗑️  TPs removed: {position_id}")
 
+    def transfer_take_profits(self, old_id: str, new_id: str):
+        """Transfère les take profits d'un ID vers un autre"""
+        if old_id in self.active_tps:
+            self.active_tps[new_id] = self.active_tps[old_id]
+            del self.active_tps[old_id]
+            self.logger.debug(f"🔄 TPs transférés: {old_id} → {new_id}")
+
     def get_stats(self, position_id: str) -> Optional[Dict]:
         """Stats des TPs"""
         state = self.active_tps.get(position_id)

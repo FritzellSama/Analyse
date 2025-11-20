@@ -367,6 +367,14 @@ class TradeExecutor:
                 self.logger.error("❌ Impossible de créer position")
                 return None
 
+            # 6b. Mettre à jour les managers SL/TP avec le bon ID de position
+            # (l'ID pré-généré était temporaire, maintenant on utilise l'ID réel)
+            if position_id != position.id:
+                # Transférer le stop-loss vers le nouvel ID
+                self.stop_loss_manager.transfer_stop(position_id, position.id)
+                # Transférer les take-profits vers le nouvel ID
+                self.take_profit_manager.transfer_take_profits(position_id, position.id)
+
             # 7. Notifier circuit breaker SEULEMENT si position créée avec succès
             self.circuit_breaker.record_trade()
 
