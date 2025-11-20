@@ -427,6 +427,18 @@ class TradeExecutor:
                 position.id, current_price
             )
 
+            # DEBUG: Afficher l'état du SL (une seule fois pour la première position)
+            current_sl = self.stop_loss_manager.get_current_sl(position.id)
+            if position == open_positions[0]:  # Seulement la première position
+                if current_sl:
+                    sl_distance_pct = abs(current_price - current_sl) / current_price * 100
+                    self.logger.info(
+                        f"🔍 MONITOR [{len(open_positions)} pos] | Price={current_price:.2f} | "
+                        f"Entry={position.entry_price:.2f} | SL={current_sl:.2f} ({sl_distance_pct:.2f}% away)"
+                    )
+                else:
+                    self.logger.warning(f"⚠️ Position {position.id} n'a pas de SL enregistré!")
+
             if sl_result.get('sl_hit', False):
                 sl_price = self.stop_loss_manager.get_current_sl(position.id) or current_price
                 self.logger.warning(
