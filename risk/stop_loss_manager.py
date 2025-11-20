@@ -40,7 +40,8 @@ class StopLossManager:
         # Config trailing - accès sécurisé
         trailing_cfg = get_nested_config(config, 'risk', 'stop_loss', 'trailing', default={})
         self.trailing_enabled = trailing_cfg.get('enabled', False)
-        self.breakeven_trigger_atr = trailing_cfg.get('breakeven_atr_trigger', 1.5)
+        self.activation_profit_atr = trailing_cfg.get('activation_profit_atr', 0.5)  # Active trailing
+        self.breakeven_trigger_atr = trailing_cfg.get('breakeven_atr_trigger', 1.5)  # Move to breakeven
         self.trail_distance_atr = trailing_cfg.get('trail_distance_atr', 1.0)
         self.trail_step_atr = trailing_cfg.get('step_atr', 0.5)
 
@@ -185,24 +186,28 @@ class StopLossManager:
             # Update highest
             if state.highest_price is None or current_price > state.highest_price:
                 state.highest_price = current_price
-            
-            # Check breakeven trigger
-            if not state.breakeven_triggered:
-                profit = state.highest_price - state.entry_price
-                if profit >= state.atr * self.breakeven_trigger_atr:
-                    # Move SL to breakeven
-                    state.current_sl = state.entry_price
-                    state.breakeven_triggered = True
-                    state.is_trailing = True
-                    result['sl_updated'] = True
-                    result['new_sl'] = state.current_sl
-                    result['breakeven_triggered'] = True
-                    self.logger.info(f"⚖️  Breakeven triggered: {position_id}")
-            
-            # Trailing stop
+
+            profit = state.highest_price - state.entry_price
+
+            # 1. Activer trailing dès activation_profit_atr
+            if not state.is_trailing and profit >= state.atr * self.activation_profit_atr:
+                state.is_trailing = True
+                self.logger.info(f"🚀 Trailing activé: {position_id} (profit: {profit:.2f})")
+
+            # 2. Check breakeven trigger
+            if not state.breakeven_triggered and profit >= state.atr * self.breakeven_trigger_atr:
+                # Move SL to breakeven
+                state.current_sl = state.entry_price
+                state.breakeven_triggered = True
+                result['sl_updated'] = True
+                result['new_sl'] = state.current_sl
+                result['breakeven_triggered'] = True
+                self.logger.info(f"⚖️  Breakeven triggered: {position_id}")
+
+            # 3. Trailing stop - suit le prix
             if state.is_trailing:
                 new_sl = state.highest_price - (state.atr * self.trail_distance_atr)
-                
+
                 # Update si nouveau SL > ancien SL
                 if new_sl > state.current_sl:
                     state.current_sl = new_sl
@@ -214,23 +219,27 @@ class StopLossManager:
             # Update lowest
             if state.lowest_price is None or current_price < state.lowest_price:
                 state.lowest_price = current_price
-            
-            # Check breakeven
-            if not state.breakeven_triggered:
-                profit = state.entry_price - state.lowest_price
-                if profit >= state.atr * self.breakeven_trigger_atr:
-                    state.current_sl = state.entry_price
-                    state.breakeven_triggered = True
-                    state.is_trailing = True
-                    result['sl_updated'] = True
-                    result['new_sl'] = state.current_sl
-                    result['breakeven_triggered'] = True
-                    self.logger.info(f"⚖️  Breakeven triggered: {position_id}")
-            
-            # Trailing
+
+            profit = state.entry_price - state.lowest_price
+
+            # 1. Activer trailing dès activation_profit_atr
+            if not state.is_trailing and profit >= state.atr * self.activation_profit_atr:
+                state.is_trailing = True
+                self.logger.info(f"🚀 Trailing activé: {position_id} (profit: {profit:.2f})")
+
+            # 2. Check breakeven
+            if not state.breakeven_triggered and profit >= state.atr * self.breakeven_trigger_atr:
+                state.current_sl = state.entry_price
+                state.breakeven_triggered = True
+                result['sl_updated'] = True
+                result['new_sl'] = state.current_sl
+                result['breakeven_triggered'] = True
+                self.logger.info(f"⚖️  Breakeven triggered: {position_id}")
+
+            # 3. Trailing
             if state.is_trailing:
                 new_sl = state.lowest_price + (state.atr * self.trail_distance_atr)
-                
+
                 if new_sl < state.current_sl:
                     state.current_sl = new_sl
                     result['sl_updated'] = True
