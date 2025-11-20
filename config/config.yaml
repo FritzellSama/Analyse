@@ -98,28 +98,28 @@ risk:
   max_daily_loss_percent: 5.0  # 5% max daily loss before stopping
   max_daily_loss_stop: true  # Stop trading si max loss atteint
 
-  # Stop Loss
+  # Stop Loss - Optimisé pour 80% winrate + gros gains
   stop_loss:
     method: atr_based  # atr_based, fixed_percent, support_resistance
-    atr_multiplier: 1.5
+    atr_multiplier: 1.5  # SL initial large = winrate élevé
     fixed_percent: 2.0
     trailing:
       enabled: true
-      activation_profit_atr: 0.5
-      breakeven_atr_trigger: 1.0
-      trail_distance_atr: 0.3
-      step_atr: 0.1
-  
-  # Take Profit
+      activation_profit_atr: 0.5    # Active trailing dès 0.5x ATR de profit
+      breakeven_atr_trigger: 0.75   # Breakeven rapide à 0.75x ATR (sécurise winrate)
+      trail_distance_atr: 0.5       # Trailing serré pour maximiser gains
+      step_atr: 0.1                 # Ajustements fins
+
+  # Take Profit - Sécuriser + laisser courir
   take_profit:
     method: multi_level  # multi_level, atr_based, risk_reward
     levels:
-      - percent: 50    # 50% position
-        multiplier: 1.5  # 1.5x risk (TP1)
-      - percent: 30    # 30% position
-        multiplier: 2.5  # 2.5x risk (TP2)
-      - percent: 20    # 20% position
-        multiplier: 4.0  # 4x risk (TP3 - moonshot)
+      - percent: 30    # 30% sécurisé rapidement
+        multiplier: 1.0  # TP1 à 1x risque
+      - percent: 30    # 30% de plus
+        multiplier: 2.0  # TP2 à 2x risque
+      - percent: 40    # 40% court avec trailing
+        multiplier: 10.0  # TP3 très loin - le trailing fera le travail
   
   # Circuit Breakers
   circuit_breakers:
