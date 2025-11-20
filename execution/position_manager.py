@@ -406,17 +406,17 @@ class PositionManager:
         avg_loss = 0
 
         if self.winning_trades > 0:
-            winning_pnls = [p.pnl for p in self.closed_positions if p.pnl > 0]
+            winning_pnls = [p.realized_pnl for p in self.closed_positions if p.realized_pnl > 0]
             avg_win = safe_divide(sum(winning_pnls), len(winning_pnls), default=0.0) if winning_pnls else 0
 
         if self.losing_trades > 0:
-            losing_pnls = [abs(p.pnl) for p in self.closed_positions if p.pnl < 0]
+            losing_pnls = [abs(p.realized_pnl) for p in self.closed_positions if p.realized_pnl < 0]
             avg_loss = safe_divide(sum(losing_pnls), len(losing_pnls), default=0.0) if losing_pnls else 0
 
         # Profit factor
         profit_factor = 0
-        total_wins = sum(p.pnl for p in self.closed_positions if p.pnl > 0)
-        total_losses = abs(sum(p.pnl for p in self.closed_positions if p.pnl < 0))
+        total_wins = sum(p.realized_pnl for p in self.closed_positions if p.realized_pnl > 0)
+        total_losses = abs(sum(p.realized_pnl for p in self.closed_positions if p.realized_pnl < 0))
 
         if total_losses > 0:
             profit_factor = safe_divide(total_wins, total_losses, default=0.0)
