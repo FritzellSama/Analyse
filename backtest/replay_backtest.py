@@ -364,7 +364,7 @@ class ReplayBacktest:
             try:
                 position_manager.close_position(
                     position_id=position.id,
-                    exit_price=last_price,
+                    close_price=last_price,
                     reason="Fin du backtest"
                 )
                 self.logger.debug(f"✅ Position {position.id} fermée @ ${last_price:.2f}")
