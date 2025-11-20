@@ -319,6 +319,13 @@ class ReplayBacktest:
                     except Exception as e:
                         self.logger.error(f"❌ Erreur exécution signal: {e}")
 
+                # ========== MONITORING SL/TP ==========
+                # Vérifier stop-loss et take-profit pour toutes les positions ouvertes
+                try:
+                    self.bot.trade_executor.monitor_positions()
+                except Exception as e:
+                    self.logger.debug(f"⚠️ Erreur monitoring: {e}")
+
             except KeyboardInterrupt:
                 self.running = False
                 self.logger.warning("⚠️ Interruption utilisateur détectée")
