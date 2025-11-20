@@ -41,6 +41,11 @@ class PositionManager:
 
         # Limites
         risk_config = config.get('risk', {})
+
+        # DEBUG: Afficher le contenu pour diagnostic
+        self.logger.info(f"🔍 DEBUG risk_config keys: {list(risk_config.keys())}")
+        self.logger.info(f"🔍 DEBUG max_positions_simultaneous dans config: {risk_config.get('max_positions_simultaneous', 'NON TROUVÉ')}")
+
         self.max_positions = risk_config.get('max_positions_simultaneous', 3)
         self.max_same_direction = risk_config.get('max_positions_same_direction', 2)
 
