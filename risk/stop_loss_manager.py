@@ -253,6 +253,14 @@ class StopLossManager:
             self.logger.debug(f"🗑️  Stop removed: {position_id}")
 
     @synchronized()
+    def transfer_stop(self, old_id: str, new_id: str):
+        """Transfère un stop loss d'un ID vers un autre"""
+        if old_id in self.active_stops:
+            self.active_stops[new_id] = self.active_stops[old_id]
+            del self.active_stops[old_id]
+            self.logger.debug(f"🔄 Stop transféré: {old_id} → {new_id}")
+
+    @synchronized()
     def get_all_stops(self) -> Dict[str, float]:
         """Récupère tous les SL actifs"""
         return {
