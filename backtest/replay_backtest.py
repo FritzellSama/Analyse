@@ -332,7 +332,47 @@ class ReplayBacktest:
 
         # Fin du backtest
         self.logger.info("🏁 Replay terminé")
+
+        # Fermer toutes les positions ouvertes au dernier prix
+        self._close_all_open_positions()
+
         self._print_results()
+
+    def _close_all_open_positions(self):
+        """Ferme toutes les positions ouvertes à la fin du backtest"""
+        if not self.bot or not hasattr(self.bot, 'trade_executor'):
+            return
+
+        position_manager = self.bot.trade_executor.position_manager
+        open_positions = position_manager.get_all_open_positions()
+
+        if not open_positions:
+            self.logger.info("📭 Aucune position ouverte à fermer")
+            return
+
+        self.logger.info(f"🔒 Fermeture de {len(open_positions)} positions ouvertes...")
+
+        # Obtenir le dernier prix
+        try:
+            ticker = self.virtual_client.get_ticker()
+            last_price = ticker.get('last', 0)
+        except Exception:
+            # Fallback: utiliser le prix de la dernière position
+            last_price = open_positions[0].entry_price if open_positions else 0
+
+        for position in open_positions:
+            try:
+                position_manager.close_position(
+                    position_id=position.id,
+                    exit_price=last_price,
+                    reason="Fin du backtest"
+                )
+                self.logger.debug(f"✅ Position {position.id} fermée @ ${last_price:.2f}")
+            except Exception as e:
+                self.logger.error(f"❌ Erreur fermeture position {position.id}: {e}")
+
+        self.logger.info(f"✅ {len(open_positions)} positions fermées")
+
 
     def _print_results(self):
         """Affiche les résultats du backtest"""
