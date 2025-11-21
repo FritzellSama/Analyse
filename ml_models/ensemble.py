@@ -63,20 +63,20 @@ class EnsembleModel:
     def predict(self, X: pd.DataFrame) -> np.ndarray:
         """
         Prédiction binaire avec ensemble
-        
+
         Args:
             X: Features DataFrame
-        
+
         Returns:
             Array de prédictions (0=DOWN, 1=UP)
         """
-        
+
         if not self.models:
             raise ValueError("Aucun modèle dans l'ensemble")
-        
+
         # Prédictions de chaque modèle
         predictions = {}
-        
+
         for name, model in self.models.items():
             try:
                 pred = model.predict(X)
@@ -84,20 +84,29 @@ class EnsembleModel:
             except Exception as e:
                 self.logger.warning(f"⚠️ Erreur prédiction {name}: {e}")
                 continue
-        
+
         if not predictions:
             return np.array([])
-        
+
         # Combiner selon méthode
         if self.method == 'voting':
             ensemble_pred = self._voting(predictions)
         elif self.method == 'weighted':
             probas = self._get_probabilities(X)
-            ensemble_pred = self._weighted_average(probas)
+            ensemble_proba = self._weighted_average(probas)
+            # Convert probabilities to binary predictions
+            if len(ensemble_proba) > 0:
+                # If shape is (N, 2), take argmax; if shape is (N,), threshold at 0.5
+                if len(ensemble_proba.shape) > 1 and ensemble_proba.shape[1] == 2:
+                    ensemble_pred = np.argmax(ensemble_proba, axis=1)
+                else:
+                    ensemble_pred = (ensemble_proba > 0.5).astype(int)
+            else:
+                ensemble_pred = np.array([])
         else:
             # Default: voting
             ensemble_pred = self._voting(predictions)
-        
+
         return ensemble_pred
     
     def predict_proba(self, X: pd.DataFrame) -> np.ndarray:
