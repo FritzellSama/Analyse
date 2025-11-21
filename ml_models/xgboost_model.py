@@ -36,11 +36,17 @@ class XGBoostModel:
         
         # Configuration XGBoost
         xgb_config = config.get('ml', {}).get('models', {}).get('xgboost', {})
-        
-        self.n_estimators = xgb_config.get('n_estimators', 200)
-        self.max_depth = xgb_config.get('max_depth', 6)
-        self.learning_rate = xgb_config.get('learning_rate', 0.1)
+
+        self.n_estimators = xgb_config.get('n_estimators', 100)
+        self.max_depth = xgb_config.get('max_depth', 4)
+        self.learning_rate = xgb_config.get('learning_rate', 0.05)
         self.objective = xgb_config.get('objective', 'binary:logistic')
+        # Regularization parameters to prevent overfitting
+        self.reg_alpha = xgb_config.get('reg_alpha', 0.1)
+        self.reg_lambda = xgb_config.get('reg_lambda', 1.0)
+        self.min_child_weight = xgb_config.get('min_child_weight', 3)
+        self.subsample = xgb_config.get('subsample', 0.8)
+        self.colsample_bytree = xgb_config.get('colsample_bytree', 0.8)
         
         # Model
         self.model = None
@@ -88,7 +94,7 @@ class XGBoostModel:
         # Sauvegarder feature names
         self.feature_names = list(X.columns)
         
-        # Paramètres du modèle
+        # Paramètres du modèle avec régularisation anti-overfitting
         params = {
             'n_estimators': self.n_estimators,
             'max_depth': self.max_depth,
@@ -97,7 +103,13 @@ class XGBoostModel:
             'eval_metric': 'logloss',
             'random_state': 42,
             'n_jobs': -1,
-            'tree_method': 'hist'
+            'tree_method': 'hist',
+            # Regularization parameters
+            'reg_alpha': self.reg_alpha,
+            'reg_lambda': self.reg_lambda,
+            'min_child_weight': self.min_child_weight,
+            'subsample': self.subsample,
+            'colsample_bytree': self.colsample_bytree
         }
         
         # Créer et entraîner modèle
