@@ -236,16 +236,41 @@ class TradingLogger:
 
         self.logger.info(msg)
 
-    def trade_closed(self, symbol: str, pnl: float, pnl_percent: float, duration: str):
+    def trade_closed(
+        self,
+        symbol: str,
+        pnl: float,
+        pnl_percent: float,
+        duration: str = "",
+        side: str = "",
+        size: float = 0.0,
+        entry_price: float = 0.0,
+        exit_price: float = 0.0
+    ):
         """Log fermeture de trade"""
         emoji = "💰" if pnl > 0 else "💸"
         color = Fore.GREEN if pnl > 0 else Fore.RED
 
-        self.logger.info(
-            f"{emoji} {color}CLOSED {symbol} | "
-            f"PnL: ${pnl:+.2f} ({pnl_percent:+.2f}%) | "
-            f"Duration: {duration}{Style.RESET_ALL}"
-        )
+        # Format de base
+        msg = f"{emoji} {color}CLOSED {symbol}"
+
+        # Ajouter side si fourni
+        if side:
+            side_display = "LONG" if side.upper() in ['BUY', 'LONG'] else "SHORT"
+            msg += f" {side_display}"
+
+        msg += f" | PnL: ${pnl:+.2f} ({pnl_percent:+.2f}%)"
+
+        # Ajouter détails si fournis
+        if entry_price > 0 and exit_price > 0:
+            msg += f" | Entry: ${entry_price:.2f} → Exit: ${exit_price:.2f}"
+
+        if duration:
+            msg += f" | Duration: {duration}"
+
+        msg += Style.RESET_ALL
+
+        self.logger.info(msg)
 
     def stop_loss_hit(self, symbol: str, loss: float):
         """Log stop loss"""
