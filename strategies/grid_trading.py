@@ -68,17 +68,17 @@ class GridTradingStrategy(BaseStrategy):
         if pd.isna(last.get('volatility', np.nan)):
             return False
 
-        # Critère 1: Faible volatilité
-        if last['volatility'] < 2.0:  # Moins de 2% de volatilité
-            # Critère 2: Prix dans BB middle 80% du temps
+        # Critère 1: Volatilité modérée (increased from 2% to 4% for crypto)
+        if last['volatility'] < 4.0:
+            # Critère 2: Prix dans BB middle 60% du temps (relaxed from 80%)
             recent = df.tail(20)
             bb_range = recent['bb_upper'] - recent['bb_lower']
-            price_in_middle = ((recent['close'] > recent['bb_lower'] + bb_range * 0.2) & 
-                              (recent['close'] < recent['bb_upper'] - bb_range * 0.2))
-            
-            if price_in_middle.sum() / len(recent) > 0.8:
+            price_in_middle = ((recent['close'] > recent['bb_lower'] + bb_range * 0.15) &
+                              (recent['close'] < recent['bb_upper'] - bb_range * 0.15))
+
+            if price_in_middle.sum() / len(recent) > 0.6:  # Relaxed from 0.8
                 return True
-        
+
         return False
     
     def initialize_grid(self, current_price: float):

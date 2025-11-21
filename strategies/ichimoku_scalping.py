@@ -124,23 +124,28 @@ class IchimokuScalpingStrategy(BaseStrategy):
         bullish_score = 0
         if close > cloud_top:
             bullish_score += 2
+        elif close > cloud_bottom:  # Inside cloud but above bottom = weak bullish
+            bullish_score += 1
         if tenkan > kijun:
             bullish_score += 1
         if last['chikou_span'] > close:
             bullish_score += 1
-        
+
         # Conditions BEARISH
         bearish_score = 0
         if close < cloud_bottom:
             bearish_score += 2
+        elif close < cloud_top:  # Inside cloud but below top = weak bearish
+            bearish_score += 1
         if tenkan < kijun:
             bearish_score += 1
         if last['chikou_span'] < close:
             bearish_score += 1
-        
-        if bullish_score >= 3:
+
+        # Lowered threshold from 3 to 2 for more signals
+        if bullish_score >= 2:
             return 'BULLISH'
-        elif bearish_score >= 3:
+        elif bearish_score >= 2:
             return 'BEARISH'
         else:
             return 'NEUTRAL'
@@ -221,11 +226,11 @@ class IchimokuScalpingStrategy(BaseStrategy):
                 conditions.append('rsi_reversal')
                 confidence += 0.1
             
-            # Signal valide
-            if len(conditions) >= 2 and confidence >= 0.6:
+            # Signal valide - lowered from 2 conditions AND 0.6 confidence
+            if len(conditions) >= 2 and confidence >= 0.5:
                 stop_loss = close - (atr * self.sl_atr_mult)
                 tp_distance = atr * self.tp_atr_mult
-                
+
                 signal = Signal(
                     timestamp=last.name if hasattr(last, 'name') else datetime.now(),
                     action='BUY',
@@ -281,11 +286,11 @@ class IchimokuScalpingStrategy(BaseStrategy):
                 conditions.append('rsi_reversal')
                 confidence += 0.1
             
-            # Signal valide
-            if len(conditions) >= 2 and confidence >= 0.6:
+            # Signal valide - lowered from 2 conditions AND 0.6 confidence
+            if len(conditions) >= 2 and confidence >= 0.5:
                 stop_loss = close + (atr * self.sl_atr_mult)
                 tp_distance = atr * self.tp_atr_mult
-                
+
                 signal = Signal(
                     timestamp=last.name if hasattr(last, 'name') else datetime.now(),
                     action='SELL',
