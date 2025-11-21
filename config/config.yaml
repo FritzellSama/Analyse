@@ -118,8 +118,8 @@ risk:
         multiplier: 1.0  # TP1 à 1x risque
       - percent: 30    # 30% de plus
         multiplier: 2.0  # TP2 à 2x risque
-      - percent: 40    # 40% court avec trailing
-        multiplier: 10.0  # TP3 très loin - le trailing fera le travail
+      - percent: 40    # 40% restant avec trailing
+        multiplier: 4.0  # TP3 à 4x risque - réaliste avec trailing
   
   # Circuit Breakers
   circuit_breakers:

@@ -208,14 +208,16 @@ class ReplayBacktest:
 
             try:
                 # ========== MISE À JOUR DES INDEX ==========
+                current_time = df_main.iloc[i].name
                 for tf in self.historical_data.keys():
-                    current_time = df_main.iloc[i].name
                     df_tf = self.historical_data[tf]
                     try:
                         # Trouver l'index le plus proche du timestamp actuel
                         new_idx = df_tf.index.get_indexer([current_time], method='ffill')[0]
                         if new_idx < 0:
                             new_idx = 0
+                        # Limiter à la taille du DataFrame
+                        new_idx = min(new_idx, len(df_tf) - 1)
                     except:
                         # Fallback : utiliser le ratio mais limiter à la taille du DataFrame
                         ratio = timeframe_to_minutes(main_tf) / timeframe_to_minutes(tf)
@@ -223,10 +225,11 @@ class ReplayBacktest:
 
                     self.virtual_client.current_index[tf] = new_idx
 
-                    # Debug à i=110
+                    # Debug à i=110 - afficher si l'index est au max (données épuisées)
                     if i == 110:
                         ratio = timeframe_to_minutes(main_tf) / timeframe_to_minutes(tf)
-                        self.logger.info(f"🔍 INDEX: i={i}, TF={tf}, ratio={ratio:.4f}, new_idx={new_idx}")
+                        is_exhausted = " ⚠️ EXHAUSTED" if new_idx >= len(df_tf) - 1 else ""
+                        self.logger.info(f"🔍 INDEX: i={i}, TF={tf}, ratio={ratio:.4f}, new_idx={new_idx}/{len(df_tf)}{is_exhausted}")
 
                 # ========== TIMESTAMP ET PRIX ==========
                 current_bar = df_main.iloc[i]
