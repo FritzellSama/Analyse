@@ -63,20 +63,20 @@ class EnsembleModel:
     def predict(self, X: pd.DataFrame) -> np.ndarray:
         """
         Prédiction binaire avec ensemble
-        
+
         Args:
             X: Features DataFrame
-        
+
         Returns:
             Array de prédictions (0=DOWN, 1=UP)
         """
-        
+
         if not self.models:
             raise ValueError("Aucun modèle dans l'ensemble")
-        
+
         # Prédictions de chaque modèle
         predictions = {}
-        
+
         for name, model in self.models.items():
             try:
                 pred = model.predict(X)
@@ -84,49 +84,62 @@ class EnsembleModel:
             except Exception as e:
                 self.logger.warning(f"⚠️ Erreur prédiction {name}: {e}")
                 continue
-        
+
         if not predictions:
             return np.array([])
-        
+
         # Combiner selon méthode
         if self.method == 'voting':
             ensemble_pred = self._voting(predictions)
         elif self.method == 'weighted':
             probas = self._get_probabilities(X)
-            ensemble_pred = self._weighted_average(probas)
+            ensemble_proba = self._weighted_average(probas)
+            # Convert probabilities to binary predictions
+            if len(ensemble_proba) > 0:
+                # If shape is (N, 2), take argmax; if shape is (N,), threshold at 0.5
+                if len(ensemble_proba.shape) > 1 and ensemble_proba.shape[1] == 2:
+                    ensemble_pred = np.argmax(ensemble_proba, axis=1)
+                else:
+                    ensemble_pred = (ensemble_proba > 0.5).astype(int)
+            else:
+                ensemble_pred = np.array([])
         else:
             # Default: voting
             ensemble_pred = self._voting(predictions)
-        
+
         return ensemble_pred
     
     def predict_proba(self, X: pd.DataFrame) -> np.ndarray:
         """
         Prédiction de probabilités avec ensemble
-        
+
         Args:
             X: Features DataFrame
-        
+
         Returns:
             Array de probabilités [P(DOWN), P(UP)]
         """
-        
+
         if not self.models:
             raise ValueError("Aucun modèle dans l'ensemble")
-        
+
         # Probabilités de chaque modèle
         probas = self._get_probabilities(X)
-        
+
         if not probas:
             return np.array([])
-        
+
         # Combiner selon méthode
         if self.method == 'weighted':
             ensemble_proba = self._weighted_average(probas)
         else:
-            # Moyenne simple
-            ensemble_proba = np.mean(list(probas.values()), axis=0)
-        
+            # Moyenne simple - aligner les tailles d'abord
+            min_len = min(len(p) for p in probas.values())
+            if min_len == 0:
+                return np.array([])
+            aligned_probas = [p[-min_len:] for p in probas.values()]
+            ensemble_proba = np.mean(aligned_probas, axis=0)
+
         return ensemble_proba
     
     def _get_probabilities(self, X: pd.DataFrame) -> Dict[str, np.ndarray]:
@@ -147,50 +160,76 @@ class EnsembleModel:
     def _voting(self, predictions: Dict[str, np.ndarray]) -> np.ndarray:
         """
         Vote majoritaire
-        
+
         Args:
             predictions: Dict {model_name: predictions}
-        
+
         Returns:
             Prédictions ensemble
         """
-        
+
+        if not predictions:
+            return np.array([])
+
+        # Trouver la taille minimale (aligner les prédictions)
+        min_len = min(len(p) for p in predictions.values())
+
+        if min_len == 0:
+            return np.array([])
+
+        # Aligner toutes les prédictions à la même taille
+        aligned_preds = [p[-min_len:] for p in predictions.values()]
+
         # Stack predictions
-        pred_array = np.array(list(predictions.values()))
-        
+        pred_array = np.array(aligned_preds)
+
         # Vote majoritaire
         ensemble_pred = np.apply_along_axis(
             lambda x: np.bincount(x.astype(int)).argmax(),
             axis=0,
             arr=pred_array
         )
-        
+
         return ensemble_pred
     
     def _weighted_average(self, probas: Dict[str, np.ndarray]) -> np.ndarray:
         """
         Moyenne pondérée des probabilités
-        
+
         Args:
             probas: Dict {model_name: probabilities}
-        
+
         Returns:
             Probabilités ensemble
         """
-        
+
+        if not probas:
+            return np.array([])
+
+        # Trouver la taille minimale (LSTM retourne moins de prédictions que XGBoost)
+        min_len = min(len(p) for p in probas.values())
+
+        if min_len == 0:
+            return np.array([])
+
+        # Aligner toutes les probabilités à la même taille (prendre les dernières)
+        aligned_probas = {}
+        for name, proba in probas.items():
+            aligned_probas[name] = proba[-min_len:]
+
         # Normaliser weights si nécessaire
-        total_weight = sum(self.weights[:len(probas)])
+        total_weight = sum(self.weights[:len(aligned_probas)])
         if total_weight == 0:
             total_weight = 1.0  # Avoid division by zero
-        normalized_weights = [safe_divide(w, total_weight, default=1.0 / len(probas)) for w in self.weights[:len(probas)]]
-        
+        normalized_weights = [safe_divide(w, total_weight, default=1.0 / len(aligned_probas)) for w in self.weights[:len(aligned_probas)]]
+
         # Moyenne pondérée
-        ensemble_proba = np.zeros_like(list(probas.values())[0])
-        
-        for i, (name, proba) in enumerate(probas.items()):
-            weight = normalized_weights[i] if i < len(normalized_weights) else 1.0 / len(probas)
+        ensemble_proba = np.zeros_like(list(aligned_probas.values())[0])
+
+        for i, (name, proba) in enumerate(aligned_probas.items()):
+            weight = normalized_weights[i] if i < len(normalized_weights) else 1.0 / len(aligned_probas)
             ensemble_proba += weight * proba
-        
+
         return ensemble_proba
     
     def get_signal_with_confidence(self, X: pd.DataFrame) -> Tuple[int, float, Dict]:
