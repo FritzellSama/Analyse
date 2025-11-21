@@ -271,26 +271,26 @@ ml:
       - month
       - is_weekend
   
-  # Models Configuration - Optimized to reduce overfitting with limited data
+  # Models Configuration - Balanced for performance with some regularization
   models:
     xgboost:
       enabled: true
-      n_estimators: 100  # Reduced from 200
-      max_depth: 4  # Reduced from 6 to prevent overfitting
-      learning_rate: 0.05  # Reduced from 0.1 for more gradual learning
+      n_estimators: 150  # Balanced (was 200)
+      max_depth: 5  # Balanced (was 6)
+      learning_rate: 0.08  # Balanced (was 0.1)
       objective: binary:logistic
-      reg_alpha: 0.1  # L1 regularization
-      reg_lambda: 1.0  # L2 regularization
-      min_child_weight: 3  # Minimum samples per leaf
-      subsample: 0.8  # Use 80% of data per tree
-      colsample_bytree: 0.8  # Use 80% of features per tree
+      reg_alpha: 0.05  # Light L1 regularization
+      reg_lambda: 0.5  # Light L2 regularization
+      min_child_weight: 2  # Minimum samples per leaf
+      subsample: 0.9  # Use 90% of data per tree
+      colsample_bytree: 0.9  # Use 90% of features per tree
 
     lstm:
       enabled: true
-      sequence_length: 30  # Reduced from 50 for less data requirement
-      hidden_layers: [64, 32]  # Reduced from [128, 64]
-      dropout: 0.4  # Increased from 0.2 for more regularization
-      epochs: 50  # Reduced from 100
+      sequence_length: 40  # Balanced (was 50)
+      hidden_layers: [96, 48]  # Balanced (was [128, 64])
+      dropout: 0.3  # Balanced (was 0.2)
+      epochs: 75  # Balanced (was 100)
       
     ensemble:
       enabled: true

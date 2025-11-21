@@ -37,16 +37,16 @@ class XGBoostModel:
         # Configuration XGBoost
         xgb_config = config.get('ml', {}).get('models', {}).get('xgboost', {})
 
-        self.n_estimators = xgb_config.get('n_estimators', 100)
-        self.max_depth = xgb_config.get('max_depth', 4)
-        self.learning_rate = xgb_config.get('learning_rate', 0.05)
+        self.n_estimators = xgb_config.get('n_estimators', 150)
+        self.max_depth = xgb_config.get('max_depth', 5)
+        self.learning_rate = xgb_config.get('learning_rate', 0.08)
         self.objective = xgb_config.get('objective', 'binary:logistic')
-        # Regularization parameters to prevent overfitting
-        self.reg_alpha = xgb_config.get('reg_alpha', 0.1)
-        self.reg_lambda = xgb_config.get('reg_lambda', 1.0)
-        self.min_child_weight = xgb_config.get('min_child_weight', 3)
-        self.subsample = xgb_config.get('subsample', 0.8)
-        self.colsample_bytree = xgb_config.get('colsample_bytree', 0.8)
+        # Light regularization - balanced for performance
+        self.reg_alpha = xgb_config.get('reg_alpha', 0.05)
+        self.reg_lambda = xgb_config.get('reg_lambda', 0.5)
+        self.min_child_weight = xgb_config.get('min_child_weight', 2)
+        self.subsample = xgb_config.get('subsample', 0.9)
+        self.colsample_bytree = xgb_config.get('colsample_bytree', 0.9)
         
         # Model
         self.model = None
