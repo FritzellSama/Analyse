@@ -108,13 +108,20 @@ class VirtualBinanceClient(BaseExchangeClient):
         if not self.historical_data:
             raise Exception("Données historiques non chargées")
 
-        # Utiliser la plus petite timeframe disponible pour le prix actuel
-        smallest_tf = min(self.historical_data.keys(), key=lambda x: timeframe_to_minutes(x))
-        df = self.historical_data[smallest_tf]
-        idx = self.current_index[smallest_tf]
+        # Utiliser la timeframe principale (trend) pour le prix actuel
+        # Évite le problème des petites timeframes qui s'épuisent rapidement
+        trend_tf = get_nested_config(self.config, 'timeframes', 'trend', default='1h')
 
+        # Fallback: si trend_tf n'est pas disponible, utiliser la première timeframe avec données valides
+        if trend_tf not in self.historical_data:
+            trend_tf = list(self.historical_data.keys())[0]
+
+        df = self.historical_data[trend_tf]
+        idx = self.current_index.get(trend_tf, 0)
+
+        # Sécurité: limiter l'index à la taille du DataFrame
         if idx >= len(df):
-            raise Exception("Fin des données atteinte")
+            idx = len(df) - 1
 
         current_bar = df.iloc[idx]
         last_price = float(current_bar['close'])
