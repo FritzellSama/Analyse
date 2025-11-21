@@ -133,10 +133,10 @@ risk:
 # STRATEGIES CONFIGURATION
 # ============================================================================
 strategies:
-  # Strategy 1: Ichimoku + RSI/BB Scalping
+  # Strategy 1: Ichimoku + RSI/BB Scalping - STRATÉGIE TRENDING
   ichimoku_scalping:
     enabled: true
-    weight: 0.25  # 25% capital allocation
+    weight: 0.30  # 30% capital - Bonne pour marchés trending
     
     ichimoku:
       tenkan_period: 9
@@ -167,10 +167,10 @@ strategies:
         min_ratio: 1.5
         volume_profile: true
   
-  # Strategy 2: Grid Trading
+  # Strategy 2: Grid Trading - STRATÉGIE RANGE/SIDEWAYS
   grid_trading:
     enabled: true
-    weight: 0.25  # 25% capital
+    weight: 0.20  # 20% capital - Pour marchés latéraux
     
     grid:
       type: geometric  # arithmetic, geometric, fibonacci
@@ -183,22 +183,23 @@ strategies:
         interval_hours: 24
         min_deviation: 2.0
   
-  # Strategy 3: DCA Bot
+  # Strategy 3: DCA Bot - STRATÉGIE ACCUMULATION LONG TERME
+  # ⚠️ DCA n'est PAS fait pour du trading actif, c'est pour accumulation
   dca_bot:
     enabled: true
-    weight: 0.25  # 25% capital
+    weight: 0.15  # 15% capital - Réduit car pas adapté au trading actif
 
     dca:
-      interval_hours: 24
-      amount_per_interval: 10  # $10 par intervalle
-      drop_trigger_percent: 2.0  # Acheter si -2%
-      accumulation_target: 0.1  # Accumuler 0.1 BTC
-      emergency_stop_loss_percent: 10.0
+      interval_hours: 168  # Hebdomadaire (moins agressif)
+      amount_per_interval: 20  # $20 par semaine
+      drop_trigger_percent: 5.0  # Acheter seulement si -5% (vrais dips)
+      accumulation_target: 0.5  # Accumuler 0.5 BTC (objectif plus réaliste)
+      emergency_stop_loss_percent: 15.0  # SL large pour long terme
 
-  # Strategy 4: ML Strategy (Unified)
+  # Strategy 4: ML Strategy (Unified) - ACTIVÉE POUR PUISSANCE MAX
   ml_strategy:
-    enabled: false  # À activer après entraînement des modèles
-    weight: 0.25  # 25% capital (Total = 100%)
+    enabled: true  # ✅ ACTIVÉ - Utilise XGBoost + LSTM pour prédictions
+    weight: 0.35  # 35% capital - Stratégie principale
 
     # Path vers modèles entraînés
     models_path: ./ml_models/saved_models
@@ -208,9 +209,9 @@ strategies:
       - xgboost
       - ensemble
 
-    # Seuils de confiance
-    confidence_threshold: 0.7  # Source unique de vérité
-    min_agreement: 0.6  # % d'accord entre modèles (0-1)
+    # Seuils de confiance - Ajustés pour plus de trades qualifiés
+    confidence_threshold: 0.65  # Légèrement réduit pour plus d'opportunités
+    min_agreement: 0.55  # % d'accord entre modèles (0-1)
 
     # Risk management aligné avec risk.stop_loss
     atr_multiplier_sl: 1.5   # Stop loss à 1.5x ATR
@@ -312,14 +313,17 @@ ml:
     ensemble_agreement_threshold: 0.6
 
   meta_model:
-    enabled: false #true
+    enabled: true  # ✅ ACTIVÉ - Sélection intelligente des stratégies
 
     # Mode de sélection:
-    selection_mode: weighted_ensemble
+    # - winner_takes_all: Une seule stratégie (la meilleure pour le contexte)
+    # - weighted_ensemble: Combine toutes avec poids dynamiques
+    # - context_adaptive: Choisit selon contexte marché (trending/range/volatile)
+    selection_mode: context_adaptive  # Adapte automatiquement au marché
 
     # Seuils
-    min_confidence: 0.6  # Confidence minimum pour accepter un signal
-    context_weight: 0.5  # 0-1: poids du contexte vs performance (0.5 = 50/50)
+    min_confidence: 0.55  # Confidence minimum pour accepter un signal
+    context_weight: 0.6  # 0-1: poids du contexte vs performance (60% contexte)
 
     # Performance tracking
     performance_window_days: 7  # Fenêtre glissante pour calculer métriques
