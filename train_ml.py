@@ -50,7 +50,7 @@ def main():
         df = data_loader.load_historical_data(
             symbol=symbol,
             timeframe='5m',
-            limit=5000
+            limit=10000  # Increased for better model performance (pagination handles >1000)
         )
         
         if df.empty:
