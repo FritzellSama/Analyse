@@ -91,27 +91,37 @@ class DataLoader:
             if self._is_cache_valid(cache_key):
                 self.logger.debug(f"✅ Données récupérées du cache: {cache_key}")
                 return self.cache[cache_key].copy()
-            
-            # Charger depuis exchange
-            ohlcv = self.client.fetch_ohlcv(
-                timeframe=timeframe,
-                limit=limit,
-                since=self._parse_date(start_date) if start_date else None
-            )
-            
-            if ohlcv is None or len(ohlcv) == 0:
-                self.logger.error(f"❌ Aucune donnée reçue pour {symbol} {timeframe}")
-                return pd.DataFrame()
-            
-            # Convertir en DataFrame
-            df = pd.DataFrame(
-                ohlcv,
-                columns=['timestamp', 'open', 'high', 'low', 'close', 'volume']
-            )
-            
-            # Convertir timestamp
-            df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms')
-            df.set_index('timestamp', inplace=True)
+
+            # Utiliser pagination si plus de 1000 bougies demandées
+            if limit > 1000:
+                # Utiliser fetch_historical avec pagination
+                df = self._fetch_with_pagination(
+                    symbol=symbol,
+                    timeframe=timeframe,
+                    limit=limit,
+                    since=self._parse_date(start_date) if start_date else None
+                )
+            else:
+                # Charger depuis exchange (méthode standard)
+                ohlcv = self.client.fetch_ohlcv(
+                    timeframe=timeframe,
+                    limit=limit,
+                    since=self._parse_date(start_date) if start_date else None
+                )
+
+                if ohlcv is None or len(ohlcv) == 0:
+                    self.logger.error(f"❌ Aucune donnée reçue pour {symbol} {timeframe}")
+                    return pd.DataFrame()
+
+                # Convertir en DataFrame
+                df = pd.DataFrame(
+                    ohlcv,
+                    columns=['timestamp', 'open', 'high', 'low', 'close', 'volume']
+                )
+
+                # Convertir timestamp
+                df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms')
+                df.set_index('timestamp', inplace=True)
 
             # Valider données
             df = self._validate_data(df)
@@ -311,17 +321,93 @@ class DataLoader:
             self.logger.error(f"❌ Erreur resampling: {e}")
             return df
     
+    def _fetch_with_pagination(
+        self,
+        symbol: str,
+        timeframe: str,
+        limit: int,
+        since: Optional[int] = None
+    ) -> pd.DataFrame:
+        """
+        Récupère plus de 1000 bougies en utilisant la pagination
+
+        Args:
+            symbol: Paire de trading
+            timeframe: Timeframe
+            limit: Nombre total de bougies désirées
+            since: Timestamp de début (ms)
+
+        Returns:
+            DataFrame avec les bougies
+        """
+        all_data = []
+        batch_size = 1000
+        remaining = limit
+        current_since = since
+
+        self.logger.info(f"📥 Pagination: chargement de {limit} bougies...")
+
+        while remaining > 0:
+            batch_limit = min(batch_size, remaining)
+
+            try:
+                ohlcv = self.client.fetch_ohlcv(
+                    timeframe=timeframe,
+                    limit=batch_limit,
+                    since=current_since
+                )
+
+                if ohlcv is None or len(ohlcv) == 0:
+                    break
+
+                all_data.extend(ohlcv)
+                remaining -= len(ohlcv)
+
+                # Mise à jour du curseur pour le prochain batch
+                current_since = ohlcv[-1][0] + 1
+
+                # Si moins de bougies reçues que demandées = fin des données
+                if len(ohlcv) < batch_limit:
+                    break
+
+            except Exception as e:
+                self.logger.error(f"❌ Erreur pagination: {e}")
+                break
+
+        if not all_data:
+            self.logger.error(f"❌ Aucune donnée reçue pour {symbol} {timeframe}")
+            return pd.DataFrame()
+
+        # Convertir en DataFrame
+        df = pd.DataFrame(
+            all_data,
+            columns=['timestamp', 'open', 'high', 'low', 'close', 'volume']
+        )
+
+        # Convertir timestamp
+        df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms')
+        df = df.drop_duplicates(subset=['timestamp']).set_index('timestamp')
+        df = df.sort_index()
+
+        # Limiter au nombre exact demandé
+        if len(df) > limit:
+            df = df.tail(limit)
+
+        self.logger.info(f"✅ Pagination terminée: {len(df)} bougies récupérées")
+
+        return df
+
     def _validate_data(self, df: pd.DataFrame) -> pd.DataFrame:
         """
         Valide et nettoie les données
-        
+
         Args:
             df: DataFrame à valider
-        
+
         Returns:
             DataFrame nettoyé
         """
-        
+
         # Supprimer NaN
         df = df.dropna()
         
