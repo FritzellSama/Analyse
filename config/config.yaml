@@ -137,34 +137,34 @@ strategies:
   ichimoku_scalping:
     enabled: true
     weight: 0.30  # 30% capital - Bonne pour marchés trending
-    
+
     ichimoku:
       tenkan_period: 9
       kijun_period: 26
       senkou_span_b_period: 52
       displacement: 26
-      
+
       filters:
         require_price_above_cloud: true
         require_tk_cross: true
-        min_cloud_thickness: 0.001
+        min_cloud_thickness: 0.0005  # Reduced from 0.001 for more signals
         chikou_confirmation: true
-    
+
     scalping:
       rsi:
         period: 7
-        oversold: 30
-        overbought: 70
+        oversold: 35  # Increased from 30 for more buy opportunities
+        overbought: 65  # Decreased from 70 for more sell opportunities
         divergence_detection: true
-      
+
       bollinger:
         period: 20
         std_dev: 2.0
         squeeze_detection: true
-      
+
       volume:
         ma_period: 20
-        min_ratio: 1.5
+        min_ratio: 1.2  # Reduced from 1.5 for more signals
         volume_profile: true
   
   # Strategy 2: Grid Trading - STRATÉGIE RANGE/SIDEWAYS
