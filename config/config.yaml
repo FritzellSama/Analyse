@@ -221,7 +221,7 @@ strategies:
     auto_retrain:
       enabled: false
       frequency_days: 7
-      min_samples: 3000  # Increased for better model performance
+      min_samples: 700  # Reduced for Binance Testnet limited data
 
 
 
@@ -297,7 +297,7 @@ ml:
   # Training
   training:
     retrain_interval_hours: 24
-    min_samples: 3000  # Increased for better model performance (pagination now supports >1000 candles)
+    min_samples: 700  # Reduced for Binance Testnet limited data (796 available after feature engineering)
     validation_split: 0.2
     test_split: 0.1
     
