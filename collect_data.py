@@ -29,21 +29,31 @@ class DataCollector:
     - Collection continue en temps réel
     - Sauvegarde CSV automatique
     - Fusion de données existantes
+    - Support mainnet (lecture seule) pour plus de données historiques
     """
 
-    def __init__(self, config: dict):
+    def __init__(self, config: dict, use_mainnet: bool = False):
         self.config = config
         self.logger = setup_logger('DataCollector')
+        self.use_mainnet = use_mainnet
 
         # Initialiser client et data loader
-        self.client = BinanceTestnetClient(config)
+        if use_mainnet:
+            # Utiliser mainnet pour données historiques (lecture seule, pas de clés API requises)
+            self.logger.info("🌐 Mode MAINNET activé (lecture seule)")
+            from core.binance_mainnet_reader import BinanceMainnetReader
+            self.client = BinanceMainnetReader(config)
+        else:
+            self.client = BinanceTestnetClient(config)
+
         self.data_loader = DataLoader(self.client, config)
 
         # Dossier de sauvegarde
         self.data_dir = Path('data/collected')
         self.data_dir.mkdir(parents=True, exist_ok=True)
 
-        self.logger.info("✅ Data Collector initialisé")
+        mode_str = "MAINNET" if use_mainnet else "TESTNET"
+        self.logger.info(f"✅ Data Collector initialisé ({mode_str})")
 
     def collect_historical(
         self,
@@ -72,13 +82,18 @@ class DataCollector:
         candles_per_day = (24 * 60) // tf_minutes
         total_candles = candles_per_day * days_back
 
-        self.logger.info(f"📊 Bougies estimées: {total_candles}")
+        # Calculer la date de début (X jours en arrière)
+        start_date = (datetime.now() - timedelta(days=days_back)).strftime('%Y-%m-%d')
 
-        # Charger avec pagination
+        self.logger.info(f"📊 Bougies estimées: {total_candles}")
+        self.logger.info(f"📅 Date de début: {start_date}")
+
+        # Charger avec pagination depuis la date de début
         df = self.data_loader.load_historical_data(
             symbol=symbol,
             timeframe=timeframe,
-            limit=total_candles
+            limit=total_candles,
+            start_date=start_date
         )
 
         if df.empty:
@@ -233,6 +248,8 @@ def main():
     parser.add_argument('--days', type=int, default=30, help='Jours de données historiques')
     parser.add_argument('--hours', type=int, default=24, help='Heures de collecte continue')
     parser.add_argument('--interval', type=int, default=60, help='Intervalle entre collectes (s)')
+    parser.add_argument('--mainnet', action='store_true',
+                       help='Utiliser Binance mainnet (plus de données historiques)')
 
     args = parser.parse_args()
 
@@ -240,7 +257,7 @@ def main():
     with open('config/config.yaml', 'r') as f:
         config = yaml.safe_load(f)
 
-    collector = DataCollector(config)
+    collector = DataCollector(config, use_mainnet=args.mainnet)
 
     if args.mode == 'historical':
         print(f"\n🚀 Collecte historique: {args.days} jours de {args.symbol} {args.timeframe}")
