@@ -27,6 +27,23 @@ python collect_data.py --mode historical --days 30 --timeframe 15m
 python collect_data.py --mode historical --days 30 --symbol ETH/USDT
 ```
 
+### Utiliser Binance Mainnet (RECOMMANDÉ pour plus de données)
+
+Le testnet Binance a des données historiques limitées. Pour collecter plus de données, utilisez le **mainnet** (lecture seule, pas besoin de clés API):
+
+```bash
+# Collecter 365 jours depuis le mainnet (données réelles)
+python collect_data.py --mode historical --days 365 --mainnet
+
+# Collecter 2 ans de données
+python collect_data.py --mode historical --days 730 --mainnet
+
+# Collecter ETH depuis le mainnet
+python collect_data.py --mode historical --days 365 --symbol ETH/USDT --mainnet
+```
+
+> **Note**: Le flag `--mainnet` utilise l'API publique de Binance (lecture seule). Les données collectées peuvent ensuite être utilisées pour entraîner les modèles ML.
+
 ### Collecte continue (temps réel)
 
 ```bash
@@ -203,10 +220,22 @@ python train_ml.py
 ## 7. Commandes Rapides
 
 ```bash
-# Collecter + Entraîner (one-liner)
+# Collecter depuis MAINNET + Entraîner (recommandé)
+python collect_data.py --mode historical --days 365 --mainnet && python train_ml.py --data data/collected/BTC_USDT_5m.csv
+
+# Collecter depuis testnet + Entraîner (données limitées)
 python collect_data.py --mode historical --days 30 && python train_ml.py --data data/collected/BTC_USDT_5m.csv
 
 # Voir l'aide
 python collect_data.py --help
 python train_ml.py --help
 ```
+
+## 8. Résumé Testnet vs Mainnet
+
+| Source | Flag | Données disponibles | Usage |
+|--------|------|---------------------|-------|
+| Testnet | (défaut) | ~30 jours | Test rapide |
+| Mainnet | `--mainnet` | 2+ ans | Production, meilleure précision |
+
+> **Recommandation**: Utilisez toujours `--mainnet` pour collecter des données d'entraînement de qualité.

@@ -344,11 +344,18 @@ class DataLoader:
         batch_size = 1000
         remaining = limit
         current_since = since
+        batch_count = 0
+        consecutive_empty = 0
 
         self.logger.info(f"📥 Pagination: chargement de {limit} bougies...")
+        if current_since:
+            from datetime import datetime
+            start_dt = datetime.fromtimestamp(current_since / 1000)
+            self.logger.info(f"📅 Début depuis: {start_dt}")
 
         while remaining > 0:
             batch_limit = min(batch_size, remaining)
+            batch_count += 1
 
             try:
                 ohlcv = self.client.fetch_ohlcv(
@@ -358,24 +365,48 @@ class DataLoader:
                 )
 
                 if ohlcv is None or len(ohlcv) == 0:
-                    break
+                    consecutive_empty += 1
+                    if consecutive_empty >= 3:
+                        self.logger.warning(f"⚠️ 3 requêtes vides consécutives, fin de pagination")
+                        break
+                    # Petit délai avant de réessayer
+                    import time
+                    time.sleep(0.5)
+                    continue
 
+                consecutive_empty = 0
                 all_data.extend(ohlcv)
                 remaining -= len(ohlcv)
 
                 # Mise à jour du curseur pour le prochain batch
                 current_since = ohlcv[-1][0] + 1
 
-                # Si moins de bougies reçues que demandées = fin des données
+                # Progress log tous les 5 batchs
+                if batch_count % 5 == 0:
+                    self.logger.info(f"   📊 Batch {batch_count}: {len(all_data)} bougies collectées...")
+
+                # Si moins de bougies reçues que demandées = fin des données disponibles
                 if len(ohlcv) < batch_limit:
+                    self.logger.info(f"   ℹ️ Fin des données disponibles (reçu {len(ohlcv)} < {batch_limit} demandées)")
                     break
 
+                # Petit délai pour éviter rate limiting
+                import time
+                time.sleep(0.1)
+
             except Exception as e:
-                self.logger.error(f"❌ Erreur pagination: {e}")
-                break
+                self.logger.error(f"❌ Erreur pagination batch {batch_count}: {e}")
+                consecutive_empty += 1
+                if consecutive_empty >= 3:
+                    break
+                import time
+                time.sleep(1)
 
         if not all_data:
             self.logger.error(f"❌ Aucune donnée reçue pour {symbol} {timeframe}")
+            if since:
+                self.logger.warning(f"   ⚠️ Le testnet Binance peut avoir des données historiques limitées")
+                self.logger.warning(f"   💡 Essayez avec moins de jours ou utilisez Binance mainnet (lecture seule)")
             return pd.DataFrame()
 
         # Convertir en DataFrame
@@ -393,7 +424,12 @@ class DataLoader:
         if len(df) > limit:
             df = df.tail(limit)
 
-        self.logger.info(f"✅ Pagination terminée: {len(df)} bougies récupérées")
+        self.logger.info(f"✅ Pagination terminée: {len(df)} bougies récupérées en {batch_count} batchs")
+
+        # Avertissement si moins que demandé
+        if len(df) < limit:
+            self.logger.warning(f"   ⚠️ Seulement {len(df)}/{limit} bougies disponibles")
+            self.logger.warning(f"   💡 Le testnet Binance a des données historiques limitées")
 
         return df
 
