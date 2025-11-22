@@ -295,9 +295,9 @@ ml:
     ensemble:
       enabled: true
       method: weighted  # voting, weighted, stacking
-      weights: [0.4, 0.4, 0.2]  # XGBoost, LSTM, autres
-      min_confidence: 0.60  # Reduced from 0.7 for more trades
-      min_agreement: 0.50   # Reduced from 0.6 - easier agreement threshold
+      weights: [0.5, 0.4, 0.1]  # XGBoost, LSTM, autres - XGBoost weighted higher
+      min_confidence: 0.55  # Lowered for class-weighted models
+      min_agreement: 0.45   # Lowered - models now handle imbalance better
   
   # Training
   training:
@@ -314,8 +314,8 @@ ml:
   # Prediction
   prediction:
     horizon_bars: 5  # Prédire 5 bougies
-    confidence_threshold: 0.60  # Reduced from 0.7
-    ensemble_agreement_threshold: 0.50  # Reduced from 0.6
+    confidence_threshold: 0.55  # Lowered for class-weighted models
+    ensemble_agreement_threshold: 0.45  # Lowered - models handle imbalance
 
   meta_model:
     enabled: true  # ✅ ACTIVÉ - Sélection intelligente des stratégies

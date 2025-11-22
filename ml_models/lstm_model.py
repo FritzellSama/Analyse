@@ -166,18 +166,33 @@ class LSTMModel:
         """
         
         self.logger.info(f"🚀 Début entraînement LSTM ({len(X)} samples)")
-        
+
         # Créer séquences
         X_seq, y_seq = self.create_sequences(X, y)
-        
+
+        # Calculer le déséquilibre de classes pour class_weight
+        n_negative = np.sum(y_seq == 0)
+        n_positive = np.sum(y_seq == 1)
+        total = n_negative + n_positive
+
+        if n_positive > 0 and n_negative > 0:
+            # Poids inversement proportionnels à la fréquence
+            weight_neg = total / (2 * n_negative)
+            weight_pos = total / (2 * n_positive)
+            class_weight = {0: weight_neg, 1: weight_pos}
+            self.logger.info(f"⚖️ Class weights: {{0: {weight_neg:.2f}, 1: {weight_pos:.2f}}}")
+        else:
+            class_weight = None
+            self.logger.warning("⚠️ Impossible de calculer class_weight (classe manquante)")
+
         # Sauvegarder feature count
         self.feature_count = X.shape[1]
-        
+
         # Build model si pas encore fait
         if self.model is None:
             input_shape = (self.sequence_length, self.feature_count)
             self.build_model(input_shape)
-        
+
         # Callbacks
         early_stop = callbacks.EarlyStopping(
             monitor='val_loss',
@@ -194,13 +209,14 @@ class LSTMModel:
             verbose=1
         )
         
-        # Entraînement
+        # Entraînement avec class_weight pour gérer le déséquilibre
         history = self.model.fit(
             X_seq, y_seq,
             epochs=self.epochs,
             batch_size=32,
             validation_split=validation_split,
             callbacks=[early_stop, reduce_lr],
+            class_weight=class_weight,
             verbose=verbose
         )
         

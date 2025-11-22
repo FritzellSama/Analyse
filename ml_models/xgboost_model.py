@@ -81,19 +81,26 @@ class XGBoostModel:
         """
         
         self.logger.info(f"🚀 Début entraînement XGBoost ({len(X)} samples)")
-        
+
         # Split train/validation
         X_train, X_val, y_train, y_val = train_test_split(
             X, y,
             test_size=validation_split,
             shuffle=False  # Garder ordre temporel
         )
-        
+
         self.logger.info(f"📊 Train: {len(X_train)} | Validation: {len(X_val)}")
-        
+
+        # Calculer le déséquilibre de classes
+        n_negative = len(y_train[y_train == 0])
+        n_positive = len(y_train[y_train == 1])
+        scale_pos_weight = n_negative / n_positive if n_positive > 0 else 1.0
+
+        self.logger.info(f"⚖️ Balance classes: {n_negative} neg / {n_positive} pos (ratio: {scale_pos_weight:.2f})")
+
         # Sauvegarder feature names
         self.feature_names = list(X.columns)
-        
+
         # Paramètres du modèle avec régularisation anti-overfitting
         params = {
             'n_estimators': self.n_estimators,
@@ -104,6 +111,8 @@ class XGBoostModel:
             'random_state': 42,
             'n_jobs': -1,
             'tree_method': 'hist',
+            # Class imbalance handling
+            'scale_pos_weight': scale_pos_weight,
             # Regularization parameters
             'reg_alpha': self.reg_alpha,
             'reg_lambda': self.reg_lambda,
