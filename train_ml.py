@@ -4,7 +4,10 @@ Script standalone pour entraîner les modèles ML
 """
 
 import sys
+import argparse
+import pandas as pd
 from datetime import datetime
+from pathlib import Path
 from config import ConfigLoader
 from core.binance_client import BinanceClient
 from data.data_loader import DataLoader
@@ -14,7 +17,12 @@ from utils.config_helpers import get_nested_config
 
 def main():
     """Point d'entrée pour training ML"""
-    
+
+    parser = argparse.ArgumentParser(description='Entraînement des modèles ML')
+    parser.add_argument('--data', type=str, help='Chemin vers un fichier CSV de données')
+    parser.add_argument('--limit', type=int, default=10000, help='Nombre de bougies (si pas de --data)')
+    args = parser.parse_args()
+
     print("""
 ╔═══════════════════════════════════════════════════════════════════╗
 ║                                                                   ║
@@ -22,43 +30,56 @@ def main():
 ║                                                                   ║
 ╚═══════════════════════════════════════════════════════════════════╝
     """)
-    
+
     logger = setup_logger('MLTrainingScript')
-    
+
     try:
         # 1. Charger config
         logger.info("📋 Chargement configuration...")
         config_loader = ConfigLoader()
         config = config_loader.config
-        
+
         # 2. Connexion Binance
         logger.info("🔌 Connexion Binance...")
         client = BinanceClient(config)
-        
+
         # 3. Data loader
         logger.info("📥 Initialisation Data Loader...")
         data_loader = DataLoader(client, config)
-        
+
         # 4. ML Trainer
         logger.info("🤖 Initialisation ML Trainer...")
         trainer = MLTrainer(client, config)
-        
-        # 5. Charger données historiques
-        symbol = get_nested_config(config, 'symbols', 'primary', default='BTC/USDT')
-        logger.info(f"📊 Chargement données historiques pour {symbol}...")
-        
-        df = data_loader.load_historical_data(
-            symbol=symbol,
-            timeframe='5m',
-            limit=10000  # Increased for better model performance (pagination handles >1000)
-        )
-        
+
+        # 5. Charger données
+        if args.data:
+            # Charger depuis fichier CSV
+            csv_path = Path(args.data)
+            if not csv_path.exists():
+                logger.error(f"❌ Fichier non trouvé: {args.data}")
+                sys.exit(1)
+
+            logger.info(f"📂 Chargement données depuis: {args.data}")
+            df = pd.read_csv(args.data, index_col=0, parse_dates=True)
+            logger.info(f"✅ {len(df)} bougies chargées depuis fichier")
+        else:
+            # Charger depuis exchange
+            symbol = get_nested_config(config, 'symbols', 'primary', default='BTC/USDT')
+            logger.info(f"📊 Chargement données historiques pour {symbol}...")
+
+            df = data_loader.load_historical_data(
+                symbol=symbol,
+                timeframe='5m',
+                limit=args.limit
+            )
+
         if df.empty:
             logger.error("❌ Aucune donnée chargée")
             sys.exit(1)
-        
-        logger.info(f"✅ {len(df)} bougies chargées")
-        
+
+        logger.info(f"✅ {len(df)} bougies prêtes pour entraînement")
+        logger.info(f"   Période: {df.index.min()} → {df.index.max()}")
+
         # 6. Entraîner modèles
         logger.info("\n🚀 Début entraînement ML...")
         results = trainer.train_all_models(df)
