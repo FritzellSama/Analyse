@@ -53,9 +53,27 @@ class MLStrategy(BaseStrategy):
         
         self.logger.info("✅ ML Strategy initialisée")
     
+    def _find_latest_model(self, models_dir: Path, pattern: str) -> Path:
+        """
+        Trouve le dernier modèle correspondant au pattern
+
+        Args:
+            models_dir: Dossier des modèles
+            pattern: Pattern glob (ex: 'xgboost_*.pkl')
+
+        Returns:
+            Path du fichier le plus récent ou None
+        """
+        files = list(models_dir.glob(pattern))
+        if not files:
+            return None
+        # Trier par date de modification (plus récent en premier)
+        files.sort(key=lambda x: x.stat().st_mtime, reverse=True)
+        return files[0]
+
     def load_models(self, models_path: str):
         """
-        Charge les modèles ML entraînés
+        Charge les modèles ML entraînés (trouve automatiquement les derniers)
 
         Args:
             models_path: Chemin vers les modèles sauvegardés
@@ -68,29 +86,37 @@ class MLStrategy(BaseStrategy):
                 self.models_loaded = False
                 return
 
-            # Charger XGBoost Model
-            xgb_path = models_dir / 'xgboost_model.joblib'
-            if xgb_path.exists():
+            # Charger XGBoost Model - chercher le plus récent
+            xgb_path = self._find_latest_model(models_dir, 'xgboost_*.pkl')
+            if not xgb_path:
+                # Fallback sur ancien format
+                xgb_path = models_dir / 'xgboost_model.joblib'
+
+            if xgb_path and xgb_path.exists():
                 xgb_model = XGBoostModel(self.config)
                 xgb_model.load(str(xgb_path))
                 self.ensemble.add_model('xgboost', xgb_model)
-                self.logger.info(f"✅ XGBoost chargé depuis {xgb_path}")
+                self.logger.info(f"✅ XGBoost chargé depuis {xgb_path.name}")
             else:
-                self.logger.warning(f"⚠️ XGBoost non trouvé: {xgb_path}")
+                self.logger.warning(f"⚠️ XGBoost non trouvé dans {models_dir}")
 
-            # Charger LSTM Model (optionnel, plus lourd)
-            lstm_path = models_dir / 'lstm_model.h5'
-            if lstm_path.exists():
+            # Charger LSTM Model - chercher le plus récent
+            lstm_path = self._find_latest_model(models_dir, 'lstm_*.h5')
+            if not lstm_path:
+                # Fallback sur ancien format
+                lstm_path = models_dir / 'lstm_model.h5'
+
+            if lstm_path and lstm_path.exists():
                 try:
                     from ml_models.lstm_model import LSTMModel
                     lstm_model = LSTMModel(self.config)
                     lstm_model.load(str(lstm_path))
                     self.ensemble.add_model('lstm', lstm_model)
-                    self.logger.info(f"✅ LSTM chargé depuis {lstm_path}")
+                    self.logger.info(f"✅ LSTM chargé depuis {lstm_path.name}")
                 except ImportError as ie:
                     self.logger.warning(f"⚠️ TensorFlow non disponible pour LSTM: {ie}")
             else:
-                self.logger.debug(f"ℹ️ LSTM non trouvé (optionnel): {lstm_path}")
+                self.logger.debug(f"ℹ️ LSTM non trouvé (optionnel)")
 
             # Vérifier qu'au moins un modèle est chargé
             if len(self.ensemble.models) > 0:
