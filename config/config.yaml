@@ -104,12 +104,8 @@ risk:
 # STRATEGIES - HIGH FREQUENCY
 # ============================================================================
 strategies:
-  # DESACTIVE - Anciennes strategies
+  # Ichimoku disponible si besoin (amélioré avec conditions strictes)
   ichimoku_scalping:
-    enabled: false
-  grid_trading:
-    enabled: false
-  dca_bot:
     enabled: false
   ml_strategy:
     enabled: false
@@ -248,13 +244,6 @@ ml:
       subsample: 0.8
       colsample_bytree: 0.8
 
-    # LSTM DESACTIVE
-    lstm:
-      enabled: false
-
-    ensemble:
-      enabled: false   # Pas d'ensemble, on utilise le signal_filter
-
   training:
     retrain_interval_hours: 24
     min_samples: 500
@@ -264,9 +253,6 @@ ml:
   prediction:
     horizon_bars: 5
     confidence_threshold: 0.65
-
-  meta_model:
-    enabled: false     # Desactive, remplace par HF Manager
 
 # ============================================================================
 # EXECUTION - RAPIDE
