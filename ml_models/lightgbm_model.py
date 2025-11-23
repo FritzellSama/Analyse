@@ -55,6 +55,9 @@ class LightGBMModel:
         self.feature_importance = {}
         self.training_metrics = {}
 
+        # Seuil de classification ajustable (0.3 au lieu de 0.5 pour classe déséquilibrée)
+        self.prediction_threshold = 0.35
+
         # Paths
         self.model_dir = Path('ml_models/saved_models')
         self.model_dir.mkdir(parents=True, exist_ok=True)
@@ -74,17 +77,17 @@ class LightGBMModel:
 
         self.logger.info(f"📊 Train: {len(X_train)} | Validation: {len(X_val)}")
 
-        # Calculer le déséquilibre de classes
-        n_negative = len(y_train[y_train == 0])
-        n_positive = len(y_train[y_train == 1])
-        scale_pos_weight = n_negative / n_positive if n_positive > 0 else 1.0
-
-        self.logger.info(f"⚖️ Balance: {n_negative} neg / {n_positive} pos (ratio: {scale_pos_weight:.2f})")
-
         # Sauvegarder feature names
         self.feature_names = list(X.columns)
 
-        # Paramètres du modèle
+        # Calculer le déséquilibre de classes - AGRESSIF (x1.5)
+        n_negative = len(y_train[y_train == 0])
+        n_positive = len(y_train[y_train == 1])
+        scale_pos_weight = (n_negative / n_positive * 1.5) if n_positive > 0 else 1.0
+
+        self.logger.info(f"⚖️ Balance: {n_negative} neg / {n_positive} pos (weight: {scale_pos_weight:.2f})")
+
+        # Paramètres du modèle - optimisés pour déséquilibre
         params = {
             'n_estimators': self.n_estimators,
             'max_depth': self.max_depth,
@@ -92,12 +95,13 @@ class LightGBMModel:
             'num_leaves': self.num_leaves,
             'min_child_samples': self.min_child_samples,
             'objective': 'binary',
-            'metric': 'binary_logloss',
+            'metric': ['binary_logloss', 'auc'],  # AUC plus sensible au déséquilibre
             'boosting_type': 'gbdt',
             'random_state': 42,
             'n_jobs': -1,
             'verbose': -1,
-            # Class imbalance
+            # Class imbalance - AGRESSIF
+            'is_unbalance': True,  # Flag natif LightGBM
             'scale_pos_weight': scale_pos_weight,
             # Regularization
             'reg_alpha': self.reg_alpha,
@@ -190,7 +194,7 @@ class LightGBMModel:
             self.logger.info(f"   {i}. {feature}: {score:.4f}")
 
     def predict(self, X: pd.DataFrame) -> np.ndarray:
-        """Prédiction binaire"""
+        """Prédiction binaire avec seuil ajusté"""
 
         if self.model is None:
             raise ValueError("Modèle non entraîné")
@@ -198,7 +202,9 @@ class LightGBMModel:
         if list(X.columns) != self.feature_names:
             X = X[self.feature_names]
 
-        return self.model.predict(X)
+        # Utiliser seuil personnalisé au lieu de 0.5
+        probas = self.model.predict_proba(X)[:, 1]
+        return (probas >= self.prediction_threshold).astype(int)
 
     def predict_proba(self, X: pd.DataFrame) -> np.ndarray:
         """Prédiction de probabilités"""
