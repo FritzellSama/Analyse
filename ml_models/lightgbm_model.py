@@ -80,12 +80,12 @@ class LightGBMModel:
         # Sauvegarder feature names
         self.feature_names = list(X.columns)
 
-        # Calculer le déséquilibre de classes - AGRESSIF (x1.5)
+        # Calculer le déséquilibre de classes
         n_negative = len(y_train[y_train == 0])
         n_positive = len(y_train[y_train == 1])
-        scale_pos_weight = (n_negative / n_positive * 1.5) if n_positive > 0 else 1.0
+        imbalance_ratio = n_negative / n_positive if n_positive > 0 else 1.0
 
-        self.logger.info(f"⚖️ Balance: {n_negative} neg / {n_positive} pos (weight: {scale_pos_weight:.2f})")
+        self.logger.info(f"⚖️ Balance: {n_negative} neg / {n_positive} pos (ratio: {imbalance_ratio:.2f})")
 
         # Paramètres du modèle - optimisés pour déséquilibre
         params = {
@@ -95,14 +95,13 @@ class LightGBMModel:
             'num_leaves': self.num_leaves,
             'min_child_samples': self.min_child_samples,
             'objective': 'binary',
-            'metric': ['binary_logloss', 'auc'],  # AUC plus sensible au déséquilibre
+            'metric': ['binary_logloss', 'auc'],
             'boosting_type': 'gbdt',
             'random_state': 42,
             'n_jobs': -1,
             'verbose': -1,
-            # Class imbalance - AGRESSIF
-            'is_unbalance': True,  # Flag natif LightGBM
-            'scale_pos_weight': scale_pos_weight,
+            # Class imbalance - utiliser SEULEMENT is_unbalance (pas les deux)
+            'is_unbalance': True,
             # Regularization
             'reg_alpha': self.reg_alpha,
             'reg_lambda': self.reg_lambda,

@@ -318,6 +318,28 @@ database:
   url: sqlite:///./data/quantum_trader.db
 
 # ============================================================================
+# PERFORMANCE
+# ============================================================================
+performance:
+  use_multiprocessing: false
+  num_workers: 2
+  cache_indicators: true
+  cache_ml_predictions: true
+
+# ============================================================================
+# ADVANCED
+# ============================================================================
+advanced:
+  regime_detection:
+    enabled: false
+  order_flow:
+    enabled: false
+  mtf_correlation:
+    enabled: false
+  portfolio:
+    enabled: false
+
+# ============================================================================
 # OBJECTIFS
 # ============================================================================
 # Capital initial    : $500
