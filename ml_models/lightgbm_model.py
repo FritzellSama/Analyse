@@ -45,27 +45,27 @@ class LightGBMModel:
         # Configuration LightGBM améliorée
         lgb_config = config.get('ml', {}).get('models', {}).get('lightgbm', {})
 
-        # Hyperparamètres optimisés pour minorité
-        self.n_estimators = lgb_config.get('n_estimators', 1000)
-        self.max_depth = lgb_config.get('max_depth', 3)
-        self.learning_rate = lgb_config.get('learning_rate', 0.01)
-        self.num_leaves = lgb_config.get('num_leaves', 7)
-        self.min_child_samples = lgb_config.get('min_child_samples', 100)
-        self.min_split_gain = 0.01
+        # Hyperparamètres équilibrés (pas trop restrictifs)
+        self.n_estimators = lgb_config.get('n_estimators', 500)
+        self.max_depth = lgb_config.get('max_depth', 6)
+        self.learning_rate = lgb_config.get('learning_rate', 0.05)
+        self.num_leaves = lgb_config.get('num_leaves', 31)
+        self.min_child_samples = lgb_config.get('min_child_samples', 20)
+        self.min_split_gain = 0.001
 
-        # Régularisation maximale
-        self.reg_alpha = lgb_config.get('reg_alpha', 5.0)
-        self.reg_lambda = lgb_config.get('reg_lambda', 5.0)
-        self.max_bin = 127
+        # Régularisation modérée (pas trop forte)
+        self.reg_alpha = lgb_config.get('reg_alpha', 0.5)
+        self.reg_lambda = lgb_config.get('reg_lambda', 0.5)
+        self.max_bin = 255
 
         # Sous-échantillonnage
-        self.subsample = lgb_config.get('subsample', 0.6)
-        self.subsample_freq = 1
-        self.colsample_bytree = lgb_config.get('colsample_bytree', 0.5)
-        self.colsample_bynode = 0.5
+        self.subsample = lgb_config.get('subsample', 0.8)
+        self.subsample_freq = 5
+        self.colsample_bytree = lgb_config.get('colsample_bytree', 0.8)
+        self.colsample_bynode = 0.8
 
         # Paramètres pour déséquilibre
-        self.path_smooth = 10
+        self.path_smooth = 1
 
         # Models et métriques (ensemble)
         self.models = []
