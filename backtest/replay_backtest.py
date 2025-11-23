@@ -300,7 +300,8 @@ class ReplayBacktest:
                 if i == 110 or (signals and i % 10 == 0):
                     self.logger.info(f"🔍 SIGNAUX: i={i}, {len(signals)} générés")
 
-                filtered_signals = self.bot.strategy_manager.filter_conflicting_signals(signals)
+                # Passer market_data pour que le ML filter puisse valider les signaux
+                filtered_signals = self.bot.strategy_manager.filter_conflicting_signals(signals, market_data)
 
                 if i == 110 or (filtered_signals and i % 10 == 0):
                     self.logger.info(f"🔍 FILTRÉS: i={i}, {len(filtered_signals)} après filtrage")
