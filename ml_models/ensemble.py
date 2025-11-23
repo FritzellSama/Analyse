@@ -14,31 +14,30 @@ from utils.config_helpers import get_nested_config
 class EnsembleModel:
     """
     Modèle ensemble qui combine:
-    - XGBoost (gradient boosting)
-    - LSTM (deep learning)
-    - Autres modèles custom
-    
+    - XGBoost (gradient boosting) - 60%
+    - LightGBM (gradient boosting rapide) - 40%
+
     Méthodes de combinaison:
     - Voting (majorité)
     - Weighted average (pondération)
     - Stacking (méta-modèle)
     """
-    
+
     def __init__(self, config: Dict):
         """
         Initialise l'ensemble de modèles
-        
+
         Args:
             config: Configuration complète du bot
         """
         self.config = config
         self.logger = setup_logger('EnsembleModel')
-        
+
         # Configuration ensemble
         ensemble_config = config.get('ml', {}).get('models', {}).get('ensemble', {})
-        
-        self.method = ensemble_config.get('method', 'voting')  # voting, weighted, stacking
-        self.weights = ensemble_config.get('weights', [0.4, 0.4, 0.2])  # XGBoost, LSTM, autres
+
+        self.method = ensemble_config.get('method', 'weighted')  # voting, weighted, stacking
+        self.weights = ensemble_config.get('weights', [0.6, 0.4])  # XGBoost 60%, LightGBM 40%
         
         # Modèles
         self.models = {}
@@ -206,7 +205,7 @@ class EnsembleModel:
         if not probas:
             return np.array([])
 
-        # Trouver la taille minimale (LSTM retourne moins de prédictions que XGBoost)
+        # Trouver la taille minimale (aligner les prédictions entre modèles)
         min_len = min(len(p) for p in probas.values())
 
         if min_len == 0:
@@ -402,8 +401,8 @@ class EnsembleModel:
         
         # Prédictions
         y_pred = self.predict(X)
-        
-        # Align lengths (LSTM peut retourner moins de prédictions)
+
+        # Align lengths (différents modèles peuvent retourner des tailles différentes)
         min_len = min(len(y), len(y_pred))
         y = y.iloc[-min_len:]
         y_pred = y_pred[-min_len:]
