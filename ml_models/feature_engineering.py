@@ -388,15 +388,15 @@ class FeatureEngineer:
         
         return df
     
-    def create_target(self, df: pd.DataFrame, horizon: int = 5, threshold: float = 0.001) -> pd.DataFrame:
+    def create_target(self, df: pd.DataFrame, horizon: int = 5, threshold: float = 0.003) -> pd.DataFrame:
         """
         Crée la variable target pour le ML
-        
+
         Args:
             df: DataFrame avec features
             horizon: Nombre de bougies à prédire
-            threshold: Seuil pour classification (0.1% par défaut)
-        
+            threshold: Seuil pour classification (0.3% par défaut - mouvement significatif)
+
         Returns:
             DataFrame avec colonne 'target'
         """

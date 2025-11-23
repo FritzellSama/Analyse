@@ -142,10 +142,10 @@ class IchimokuScalpingStrategy(BaseStrategy):
         if last['chikou_span'] < close:
             bearish_score += 1
 
-        # Lowered threshold from 3 to 2 for more signals
-        if bullish_score >= 2:
+        # STRICT: Require 3+ conditions for high win rate (was 2)
+        if bullish_score >= 3:
             return 'BULLISH'
-        elif bearish_score >= 2:
+        elif bearish_score >= 3:
             return 'BEARISH'
         else:
             return 'NEUTRAL'
@@ -225,9 +225,9 @@ class IchimokuScalpingStrategy(BaseStrategy):
             if rsi > prev['rsi']:
                 conditions.append('rsi_reversal')
                 confidence += 0.1
-            
-            # Signal valide - lowered from 2 conditions AND 0.6 confidence
-            if len(conditions) >= 2 and confidence >= 0.5:
+
+            # Signal valide - STRICT: 3+ conditions AND 0.70 confidence for high win rate
+            if len(conditions) >= 3 and confidence >= 0.70:
                 stop_loss = close - (atr * self.sl_atr_mult)
                 tp_distance = atr * self.tp_atr_mult
 
@@ -286,8 +286,8 @@ class IchimokuScalpingStrategy(BaseStrategy):
                 conditions.append('rsi_reversal')
                 confidence += 0.1
             
-            # Signal valide - lowered from 2 conditions AND 0.6 confidence
-            if len(conditions) >= 2 and confidence >= 0.5:
+            # Signal valide - STRICT: 3+ conditions AND 0.70 confidence for high win rate
+            if len(conditions) >= 3 and confidence >= 0.70:
                 stop_loss = close + (atr * self.sl_atr_mult)
                 tp_distance = atr * self.tp_atr_mult
 
