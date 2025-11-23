@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
 """
-HF Models Training Script - Quantum Trader Pro
-Script pour entraîner XGBoost + LightGBM pour le système 90% Win Rate
+Script d'entraînement AMÉLIORÉ pour modèles XGBoost et LightGBM
+Optimisé pour gérer le déséquilibre de classes extrême (10% positifs)
 
-CHANGEMENTS vs train_ml.py :
-1. Target: threshold=0.003 (0.3%) au lieu de 0.001 (0.1%)
-2. Entraîne LightGBM (pas LSTM)
-3. Gestion déséquilibre via is_unbalance + seuil ajusté
-4. Optimisé pour le ML Signal Filter
+AMÉLIORATIONS PRINCIPALES:
+1. Utilise les modèles améliorés avec SMOTE, ADASYN
+2. Optimisation automatique des seuils de décision
+3. Ensemble de modèles pour LightGBM
+4. Cross-validation stratifiée
+5. Métriques métier (F2-score favorisant le recall)
+6. Analyse détaillée des performances
 
 Usage:
-    python train_hf_models.py --data data/collected/BTC_USDT_5m.csv
-    python train_hf_models.py --limit 5000
+    python train_hf_models.py --data data/BTC_USDT_5m.csv
+    python train_hf_models.py --limit 20000 --threshold 0.003
 """
 
 import sys
@@ -21,6 +23,8 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 from pathlib import Path
+import warnings
+warnings.filterwarnings('ignore')
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -32,17 +36,13 @@ from ml_models.lightgbm_model import LightGBMModel
 from ml_models.feature_engineering import FeatureEngineer
 from utils.logger import setup_logger
 from utils.config_helpers import get_nested_config
-
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 
 
 class HFModelTrainer:
     """
-    Trainer optimisé pour le système High Frequency
-
-    Différences avec MLTrainer original :
-    - threshold = 0.003 (0.3%) au lieu de 0.001 (0.1%)
-    - Pas de LSTM (remplacé par LightGBM)
-    - Focus sur la confirmation de signaux
+    Trainer optimisé pour déséquilibre de classes extrême
+    Utilise les techniques avancées des modèles améliorés
     """
 
     def __init__(self, config: dict):
@@ -53,77 +53,147 @@ class HFModelTrainer:
         ml_config = config.get('ml', {})
         training_config = ml_config.get('training', {})
 
-        self.min_samples = training_config.get('min_samples', 500)
+        self.min_samples = training_config.get('min_samples', 1000)
         self.validation_split = training_config.get('validation_split', 0.2)
         self.test_split = training_config.get('test_split', 0.1)
 
-        # IMPORTANT: Nouveaux paramètres de target
-        self.horizon_bars = 5           # 5 bougies (25 min sur 5m)
-        self.target_threshold = 0.003   # 0.3% = mouvement significatif (pas 0.1%!)
+        # Paramètres de target
+        self.horizon_bars = 5
+        self.target_threshold = 0.003
 
-        # Composants
+        # Initialiser composants
         self.feature_engineer = FeatureEngineer(config)
         self.xgboost = XGBoostModel(config)
         self.lightgbm = LightGBMModel(config)
 
         self.logger.info("✅ HF Model Trainer initialisé")
         self.logger.info(f"   Target: {self.target_threshold*100:.1f}% sur {self.horizon_bars} bougies")
+        self.logger.info(f"   Techniques: SMOTE, ADASYN, Ensemble, Seuil optimisé")
 
-    def create_better_target(self, df: pd.DataFrame) -> pd.DataFrame:
-        """
-        Crée un target MEILLEUR que l'original
-
-        CHANGEMENTS :
-        - threshold = 0.3% au lieu de 0.1%
-        - Ajoute des features de confirmation
-        """
+    def create_target_with_analysis(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Crée le target et analyse sa distribution"""
 
         df = df.copy()
 
         # Future return sur horizon
         df['future_return'] = df['close'].shift(-self.horizon_bars) / df['close'] - 1
 
-        # Target binaire avec seuil plus élevé
+        # Target binaire
         df['target'] = (df['future_return'] > self.target_threshold).astype(int)
 
-        # Analyser la distribution
-        target_counts = df['target'].value_counts()
-        total = len(df.dropna())
+        # Analyse détaillée
+        df_clean = df.dropna()
+        target_counts = df_clean['target'].value_counts()
+        total = len(df_clean)
 
         if total > 0:
             pct_positive = target_counts.get(1, 0) / total * 100
             pct_negative = target_counts.get(0, 0) / total * 100
 
-            self.logger.info(f"📊 Distribution target:")
-            self.logger.info(f"   - UP (>+{self.target_threshold*100:.1f}%): {pct_positive:.1f}%")
-            self.logger.info(f"   - DOWN/NEUTRAL: {pct_negative:.1f}%")
+            self.logger.info(f"\n📊 ANALYSE DE LA DISTRIBUTION TARGET:")
+            self.logger.info(f"   - Échantillons totaux: {total}")
+            self.logger.info(f"   - UP (>{self.target_threshold*100:.1f}%): {target_counts.get(1, 0)} ({pct_positive:.1f}%)")
+            self.logger.info(f"   - DOWN/NEUTRAL: {target_counts.get(0, 0)} ({pct_negative:.1f}%)")
 
-            # Avertissement si déséquilibre extrême
-            if pct_positive < 20 or pct_positive > 80:
-                self.logger.warning(f"⚠️ Déséquilibre de classes détecté!")
+            if pct_positive < 5:
+                self.logger.warning(f"⚠️ TRÈS PEU de positifs! Considérer:")
+                self.logger.warning(f"   - Réduire le seuil (actuellement {self.target_threshold*100:.1f}%)")
+                self.logger.warning(f"   - Augmenter l'horizon (actuellement {self.horizon_bars} bougies)")
+            elif pct_positive < 10:
+                self.logger.warning(f"⚠️ Déséquilibre sévère - Techniques avancées activées:")
+                self.logger.warning(f"   - SMOTE/ADASYN pour rééquilibrage")
+                self.logger.warning(f"   - Optimisation du seuil de décision")
+            elif pct_positive < 20:
+                self.logger.info(f"✅ Déséquilibre modéré - gérable avec techniques avancées")
+            else:
+                self.logger.info(f"✅ Distribution équilibrée")
 
         return df
 
-    def train_all(self, df: pd.DataFrame) -> dict:
-        """Entraîne XGBoost + LightGBM"""
+    def analyze_model_performance(self, results: dict):
+        """Analyse détaillée des performances et recommandations"""
 
-        self.logger.info("=" * 70)
-        self.logger.info("🚀 DÉBUT ENTRAÎNEMENT HF MODELS")
-        self.logger.info("=" * 70)
+        self.logger.info("\n" + "="*70)
+        self.logger.info("📊 ANALYSE DES PERFORMANCES")
+        self.logger.info("="*70)
+
+        # Analyser XGBoost
+        if 'xgboost' in results and 'error' not in results['xgboost']:
+            xgb = results['xgboost']
+            self.logger.info("\n🌳 XGBoost:")
+
+            val_f1 = xgb.get('val_f1', 0)
+            val_precision = xgb.get('val_precision', 0)
+            val_recall = xgb.get('val_recall', 0)
+
+            self.logger.info(f"   F1: {val_f1:.3f} | Precision: {val_precision:.3f} | Recall: {val_recall:.3f}")
+
+            if val_f1 < 0.2:
+                self.logger.warning("   ⚠️ F1 très faible - Le modèle peine à détecter les positifs")
+            elif val_f1 < 0.4:
+                self.logger.info("   📈 F1 acceptable pour déséquilibre sévère")
+            else:
+                self.logger.info("   ✅ Excellente performance!")
+
+        # Analyser LightGBM
+        if 'lightgbm' in results and 'error' not in results['lightgbm']:
+            lgb = results['lightgbm']
+            self.logger.info("\n💡 LightGBM Ensemble:")
+
+            val_f1 = lgb.get('val_f1', 0)
+            val_precision = lgb.get('val_precision', 0)
+            val_recall = lgb.get('val_recall', 0)
+
+            self.logger.info(f"   F1: {val_f1:.3f} | Precision: {val_precision:.3f} | Recall: {val_recall:.3f}")
+
+            if 'cv_scores' in lgb:
+                cv = lgb['cv_scores']
+                self.logger.info(f"   Cross-validation F1: {cv['mean_f1']:.3f} +/- {cv['std_f1']:.3f}")
+
+        # Recommandations
+        self.logger.info("\n🎯 RECOMMANDATIONS:")
+
+        xgb_f1 = results.get('xgboost', {}).get('val_f1', 0)
+        lgb_f1 = results.get('lightgbm', {}).get('val_f1', 0)
+
+        if xgb_f1 > lgb_f1 * 1.2:
+            self.logger.info("   → XGBoost meilleur - Utiliser comme modèle principal")
+        elif lgb_f1 > xgb_f1 * 1.2:
+            self.logger.info("   → LightGBM Ensemble meilleur - Utiliser comme modèle principal")
+        else:
+            self.logger.info("   → Combiner les deux modèles (moyenne pondérée)")
+
+        avg_f1 = (xgb_f1 + lgb_f1) / 2
+        if avg_f1 >= 0.4:
+            self.logger.info("\n✅ EXCELLENTES PERFORMANCES! Prêt pour le trading.")
+        elif avg_f1 >= 0.25:
+            self.logger.info("\n📈 PERFORMANCES CORRECTES. Utilisable avec prudence.")
+        else:
+            self.logger.warning("\n⚠️ PERFORMANCES FAIBLES - Améliorations nécessaires:")
+            self.logger.warning("   - Collecter plus de données")
+            self.logger.warning("   - Ajuster le seuil de target")
+            self.logger.warning("   - Ajouter des features techniques")
+
+    def train_all(self, df: pd.DataFrame) -> dict:
+        """Entraîne tous les modèles avec techniques avancées"""
+
+        self.logger.info("="*70)
+        self.logger.info("🚀 DÉBUT ENTRAÎNEMENT MODÈLES AMÉLIORÉS")
+        self.logger.info("="*70)
 
         start_time = datetime.now()
 
         # 1. Feature engineering
-        self.logger.info("\n🔨 Feature engineering...")
+        self.logger.info("\n🔨 Génération des features...")
         df_features = self.feature_engineer.generate_features(df)
 
         if df_features.empty:
-            self.logger.error("❌ Feature engineering a échoué")
+            self.logger.error("❌ Échec génération features")
             return {}
 
-        # 2. Créer target AMÉLIORÉ
+        # 2. Créer target avec analyse
         self.logger.info(f"\n🎯 Création target (threshold={self.target_threshold*100:.1f}%)...")
-        df_features = self.create_better_target(df_features)
+        df_features = self.create_target_with_analysis(df_features)
 
         # 3. Nettoyer NaN
         df_features = df_features.dropna()
@@ -132,14 +202,14 @@ class HFModelTrainer:
             self.logger.error(f"❌ Pas assez de données: {len(df_features)} < {self.min_samples}")
             return {}
 
-        self.logger.info(f"✅ {len(df_features)} samples prêts")
+        self.logger.info(f"\n✅ {len(df_features)} samples prêts pour entraînement")
 
-        # 4. Séparer features et target
+        # 4. Identifier features
         feature_names = self.feature_engineer.get_feature_names(df_features)
         X = df_features[feature_names]
         y = df_features['target']
 
-        # 5. Split train/test (garder ordre temporel)
+        # 5. Split train/test
         test_size = int(len(X) * self.test_split)
         X_train = X.iloc[:-test_size]
         y_train = y.iloc[:-test_size]
@@ -148,31 +218,39 @@ class HFModelTrainer:
 
         self.logger.info(f"📊 Split: Train={len(X_train)} | Test={len(X_test)}")
 
-        # 6. Afficher distribution des classes
+        # Afficher distribution
         n_pos = y_train.sum()
         n_neg = len(y_train) - n_pos
-        self.logger.info(f"⚖️ Classes: {n_neg} négatifs / {n_pos} positifs ({n_pos/len(y_train)*100:.1f}% positifs)")
-        self.logger.info(f"   → Gestion via is_unbalance=True + seuil de prédiction ajusté")
+        pos_ratio = n_pos / len(y_train)
+        self.logger.info(f"⚖️ Classes: {n_neg} négatifs / {n_pos} positifs ({pos_ratio*100:.1f}% positifs)")
 
         results = {}
 
-        # 7. Entraîner XGBoost
-        self.logger.info("\n" + "=" * 50)
-        self.logger.info("🌳 ENTRAÎNEMENT XGBOOST")
-        self.logger.info("=" * 50)
+        # 6. Entraîner XGBoost amélioré
+        self.logger.info("\n" + "="*50)
+        self.logger.info("🌳 ENTRAÎNEMENT XGBOOST AMÉLIORÉ")
+        self.logger.info("="*50)
 
         try:
+            # Configurer stratégie selon déséquilibre
+            if pos_ratio < 0.1:
+                self.xgboost.resampling_strategy = 'smote'
+            else:
+                self.xgboost.resampling_strategy = 'none'
+
             xgb_metrics = self.xgboost.train(
                 X_train, y_train,
                 validation_split=self.validation_split,
                 verbose=False
             )
 
-            # Évaluer sur test set
+            # Test
             y_test_pred = self.xgboost.predict(X_test)
-            from sklearn.metrics import accuracy_score, f1_score
+
             xgb_metrics['test_accuracy'] = accuracy_score(y_test, y_test_pred)
-            xgb_metrics['test_f1'] = f1_score(y_test, y_test_pred)
+            xgb_metrics['test_f1'] = f1_score(y_test, y_test_pred, zero_division=0)
+            xgb_metrics['test_precision'] = precision_score(y_test, y_test_pred, zero_division=0)
+            xgb_metrics['test_recall'] = recall_score(y_test, y_test_pred, zero_division=0)
 
             # Sauvegarder
             xgb_path = self.xgboost.save()
@@ -180,31 +258,40 @@ class HFModelTrainer:
 
             results['xgboost'] = xgb_metrics
 
-            self.logger.info(f"✅ XGBoost entraîné:")
-            self.logger.info(f"   - Val Accuracy: {xgb_metrics.get('val_accuracy', 0):.4f}")
-            self.logger.info(f"   - Test Accuracy: {xgb_metrics.get('test_accuracy', 0):.4f}")
-            self.logger.info(f"   - Test F1: {xgb_metrics.get('test_f1', 0):.4f}")
+            self.logger.info(f"\n✅ XGBoost entraîné (seuil: {self.xgboost.optimal_threshold:.3f}):")
+            self.logger.info(f"   Test: F1={xgb_metrics['test_f1']:.3f}, P={xgb_metrics['test_precision']:.3f}, R={xgb_metrics['test_recall']:.3f}")
 
         except Exception as e:
             self.logger.error(f"❌ Erreur XGBoost: {e}")
+            import traceback
+            traceback.print_exc()
             results['xgboost'] = {'error': str(e)}
 
-        # 7. Entraîner LightGBM
-        self.logger.info("\n" + "=" * 50)
-        self.logger.info("💡 ENTRAÎNEMENT LIGHTGBM")
-        self.logger.info("=" * 50)
+        # 7. Entraîner LightGBM ensemble amélioré
+        self.logger.info("\n" + "="*50)
+        self.logger.info("💡 ENTRAÎNEMENT LIGHTGBM ENSEMBLE AMÉLIORÉ")
+        self.logger.info("="*50)
 
         try:
+            # Configurer selon déséquilibre
+            if pos_ratio < 0.1:
+                self.lightgbm.resampling_strategy = 'adasyn'
+            else:
+                self.lightgbm.resampling_strategy = 'borderline'
+
             lgb_metrics = self.lightgbm.train(
                 X_train, y_train,
                 validation_split=self.validation_split,
                 verbose=False
             )
 
-            # Évaluer sur test set
+            # Test
             y_test_pred = self.lightgbm.predict(X_test)
+
             lgb_metrics['test_accuracy'] = accuracy_score(y_test, y_test_pred)
-            lgb_metrics['test_f1'] = f1_score(y_test, y_test_pred)
+            lgb_metrics['test_f1'] = f1_score(y_test, y_test_pred, zero_division=0)
+            lgb_metrics['test_precision'] = precision_score(y_test, y_test_pred, zero_division=0)
+            lgb_metrics['test_recall'] = recall_score(y_test, y_test_pred, zero_division=0)
 
             # Sauvegarder
             lgb_path = self.lightgbm.save()
@@ -212,23 +299,28 @@ class HFModelTrainer:
 
             results['lightgbm'] = lgb_metrics
 
-            self.logger.info(f"✅ LightGBM entraîné:")
-            self.logger.info(f"   - Val Accuracy: {lgb_metrics.get('val_accuracy', 0):.4f}")
-            self.logger.info(f"   - Test Accuracy: {lgb_metrics.get('test_accuracy', 0):.4f}")
-            self.logger.info(f"   - Test F1: {lgb_metrics.get('test_f1', 0):.4f}")
+            self.logger.info(f"\n✅ LightGBM entraîné (ensemble {self.lightgbm.n_models} modèles, seuil: {self.lightgbm.ensemble_threshold:.3f}):")
+            self.logger.info(f"   Test: F1={lgb_metrics['test_f1']:.3f}, P={lgb_metrics['test_precision']:.3f}, R={lgb_metrics['test_recall']:.3f}")
 
         except Exception as e:
             self.logger.error(f"❌ Erreur LightGBM: {e}")
+            import traceback
+            traceback.print_exc()
             results['lightgbm'] = {'error': str(e)}
 
-        # 8. Résumé
+        # 8. Méta-données
         elapsed = (datetime.now() - start_time).total_seconds()
         results['training_time_seconds'] = elapsed
         results['samples_trained'] = len(X_train)
         results['samples_tested'] = len(X_test)
         results['target_threshold'] = self.target_threshold
         results['horizon_bars'] = self.horizon_bars
+        results['positive_ratio'] = float(pos_ratio)
 
+        # 9. Analyse des performances
+        self.analyze_model_performance(results)
+
+        # 10. Résumé final
         self._print_summary(results)
 
         return results
@@ -236,9 +328,9 @@ class HFModelTrainer:
     def _print_summary(self, results: dict):
         """Affiche le résumé final"""
 
-        self.logger.info("\n" + "=" * 70)
-        self.logger.info("✅ ENTRAÎNEMENT HF MODELS TERMINÉ")
-        self.logger.info("=" * 70)
+        self.logger.info("\n" + "="*70)
+        self.logger.info("✅ ENTRAÎNEMENT TERMINÉ")
+        self.logger.info("="*70)
 
         self.logger.info(f"\n📊 Configuration:")
         self.logger.info(f"   - Target threshold: {results.get('target_threshold', 0)*100:.1f}%")
@@ -246,38 +338,28 @@ class HFModelTrainer:
         self.logger.info(f"   - Samples entraînés: {results.get('samples_trained', 0)}")
         self.logger.info(f"   - Durée: {results.get('training_time_seconds', 0):.1f}s")
 
-        self.logger.info(f"\n📈 PERFORMANCES:")
+        self.logger.info(f"\n📈 PERFORMANCES FINALES:")
 
-        # XGBoost
+        xgb_f1 = results.get('xgboost', {}).get('test_f1', 0)
+        lgb_f1 = results.get('lightgbm', {}).get('test_f1', 0)
+
         if 'xgboost' in results and 'error' not in results['xgboost']:
             xgb = results['xgboost']
             self.logger.info(f"\n   🌳 XGBoost:")
-            self.logger.info(f"      Val Accuracy:  {xgb.get('val_accuracy', 0):.2%}")
-            self.logger.info(f"      Test Accuracy: {xgb.get('test_accuracy', 0):.2%}")
             self.logger.info(f"      Test F1:       {xgb.get('test_f1', 0):.2%}")
+            self.logger.info(f"      Test Precision: {xgb.get('test_precision', 0):.2%}")
+            self.logger.info(f"      Test Recall:    {xgb.get('test_recall', 0):.2%}")
 
-        # LightGBM
         if 'lightgbm' in results and 'error' not in results['lightgbm']:
             lgb = results['lightgbm']
-            self.logger.info(f"\n   💡 LightGBM:")
-            self.logger.info(f"      Val Accuracy:  {lgb.get('val_accuracy', 0):.2%}")
-            self.logger.info(f"      Test Accuracy: {lgb.get('test_accuracy', 0):.2%}")
+            self.logger.info(f"\n   💡 LightGBM Ensemble:")
             self.logger.info(f"      Test F1:       {lgb.get('test_f1', 0):.2%}")
+            self.logger.info(f"      Test Precision: {lgb.get('test_precision', 0):.2%}")
+            self.logger.info(f"      Test Recall:    {lgb.get('test_recall', 0):.2%}")
 
-        # Comparer les deux
-        xgb_acc = results.get('xgboost', {}).get('test_accuracy', 0)
-        lgb_acc = results.get('lightgbm', {}).get('test_accuracy', 0)
-
-        if xgb_acc > 0 and lgb_acc > 0:
-            combined = (xgb_acc * 0.6 + lgb_acc * 0.4)  # Weighted average
+        if xgb_f1 > 0 and lgb_f1 > 0:
+            combined = (xgb_f1 * 0.6 + lgb_f1 * 0.4)
             self.logger.info(f"\n   🎯 Combined (60/40): {combined:.2%}")
-
-            if combined >= 0.70:
-                self.logger.info(f"   ✅ BON! Les modèles peuvent améliorer le win rate")
-            elif combined >= 0.60:
-                self.logger.info(f"   ⚠️ ACCEPTABLE mais peut être amélioré")
-            else:
-                self.logger.info(f"   ❌ FAIBLE - Plus de données nécessaires")
 
 
 def load_data_from_csv(csv_path: str, logger) -> pd.DataFrame:
@@ -294,7 +376,6 @@ def load_data_from_csv(csv_path: str, logger) -> pd.DataFrame:
     try:
         df = pd.read_csv(csv_path, index_col=0, parse_dates=True)
 
-        # Vérifier colonnes requises
         required = ['open', 'high', 'low', 'close', 'volume']
         missing = [c for c in required if c not in df.columns]
 
@@ -338,30 +419,37 @@ def load_data_from_api(config: dict, limit: int, logger) -> pd.DataFrame:
 
 
 def main():
-    """Point d'entrée"""
+    """Point d'entrée principal"""
 
     parser = argparse.ArgumentParser(
-        description='Entraînement HF Models (XGBoost + LightGBM)'
+        description='Entraînement de modèles ML améliorés pour trading'
     )
     parser.add_argument('--data', type=str, default=None,
                        help='Chemin vers fichier CSV')
     parser.add_argument('--limit', type=int, default=10000,
                        help='Nombre de bougies depuis API')
     parser.add_argument('--threshold', type=float, default=0.003,
-                       help='Seuil de target (défaut: 0.3%%)')
+                       help='Seuil de target en %% (défaut: 0.3%%)')
+    parser.add_argument('--horizon', type=int, default=5,
+                       help='Horizon de prédiction en bougies')
 
     args = parser.parse_args()
 
     print("""
-╔═══════════════════════════════════════════════════════════════════╗
-║                                                                   ║
-║      🚀 HF MODELS TRAINING - 90%% WIN RATE SYSTEM 🚀              ║
-║                                                                   ║
-║      XGBoost + LightGBM (pas de LSTM!)                           ║
-║      Target: {:.1f}%% (pas 0.1%%)                                  ║
-║                                                                   ║
-╚═══════════════════════════════════════════════════════════════════╝
-    """.format(args.threshold * 100))
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                                                                           ║
+║            🚀 ENTRAÎNEMENT MODÈLES ML AMÉLIORÉS 🚀                       ║
+║                                                                           ║
+║   Techniques avancées pour déséquilibre de classes:                      ║
+║   - SMOTE / ADASYN pour rééchantillonnage                               ║
+║   - Optimisation automatique des seuils                                  ║
+║   - Ensemble de modèles LightGBM                                         ║
+║   - Cross-validation stratifiée                                          ║
+║                                                                           ║
+║   Target: {:.1f}% sur {} bougies                                              ║
+║                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+    """.format(args.threshold * 100, args.horizon))
 
     logger = setup_logger('HFTraining')
 
@@ -383,7 +471,8 @@ def main():
 
         # Entraîner
         trainer = HFModelTrainer(config)
-        trainer.target_threshold = args.threshold  # Override si spécifié
+        trainer.target_threshold = args.threshold
+        trainer.horizon_bars = args.horizon
 
         results = trainer.train_all(df)
 
@@ -392,19 +481,26 @@ def main():
             sys.exit(1)
 
         # Instructions finales
-        print("\n" + "=" * 70)
+        print("\n" + "="*70)
         print("💡 PROCHAINES ÉTAPES:")
-        print("=" * 70)
-        print("""
-1. Les modèles sont sauvegardés dans ml_models/saved_models/
+        print("="*70)
 
-2. Pour utiliser la nouvelle config:
-   cp config/config_hf_90wr.yaml config/config.yaml
+        xgb_f1 = results.get('xgboost', {}).get('test_f1', 0)
+        lgb_f1 = results.get('lightgbm', {}).get('test_f1', 0)
 
-3. Pour lancer le backtest:
-   python paper_trading.py
+        print(f"""
+MODÈLES SAUVEGARDÉS:
+• XGBoost: {results.get('xgboost', {}).get('model_path', 'N/A')}
+• LightGBM: {results.get('lightgbm', {}).get('model_path', 'N/A')}
 
-4. Les modèles seront automatiquement chargés par MLSignalFilter
+PERFORMANCES:
+• XGBoost F1: {xgb_f1:.3f}
+• LightGBM F1: {lgb_f1:.3f}
+
+UTILISATION:
+1. Les modèles sont automatiquement chargés par MLSignalFilter
+2. Lancer le backtest: python paper_trading.py
+3. Pour re-entraîner avec plus de données: python train_hf_models.py --limit 50000
         """)
 
     except KeyboardInterrupt:
