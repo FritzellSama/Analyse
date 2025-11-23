@@ -53,7 +53,10 @@ class XGBoostModel:
         self.feature_names = []
         self.feature_importance = {}
         self.training_metrics = {}
-        
+
+        # Seuil de classification ajustable (bas pour détecter plus de positifs)
+        self.prediction_threshold = 0.25
+
         # Paths
         self.model_dir = Path('ml_models/saved_models')
         self.model_dir.mkdir(parents=True, exist_ok=True)
@@ -219,25 +222,27 @@ class XGBoostModel:
     
     def predict(self, X: pd.DataFrame) -> np.ndarray:
         """
-        Prédiction binaire (0 ou 1)
-        
+        Prédiction binaire avec seuil ajusté (0 ou 1)
+
         Args:
             X: Features DataFrame
-        
+
         Returns:
             Array de prédictions (0=DOWN, 1=UP)
         """
-        
+
         if self.model is None:
             raise ValueError("Modèle non entraîné")
-        
+
         # Vérifier features
         if list(X.columns) != self.feature_names:
             self.logger.warning("⚠️ Features différentes, réordonnancement")
             X = X[self.feature_names]
-        
-        predictions = self.model.predict(X)
-        
+
+        # Utiliser seuil personnalisé au lieu de 0.5 par défaut
+        probas = self.model.predict_proba(X)[:, 1]
+        predictions = (probas >= self.prediction_threshold).astype(int)
+
         return predictions
     
     def predict_proba(self, X: pd.DataFrame) -> np.ndarray:
