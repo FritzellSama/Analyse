@@ -62,7 +62,13 @@ class MLSignalFilter:
     def _load_models(self):
         """Charge les modèles pré-entraînés"""
 
-        model_dir = Path('ml_models/saved_models')
+        # Chemin absolu vers le dossier des modèles (racine du projet)
+        project_root = Path(__file__).parent.parent
+        model_dir = project_root / 'ml_models' / 'saved_models'
+
+        if not model_dir.exists():
+            self.logger.warning(f"⚠️ Dossier modèles introuvable: {model_dir}")
+            return
 
         # Charger XGBoost
         xgb_files = sorted(model_dir.glob('xgboost_*.pkl'))
