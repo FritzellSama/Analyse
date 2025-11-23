@@ -81,7 +81,8 @@ class LightGBMModel:
         self.prediction_threshold = 0.35  # Fallback
 
         # Stratégie de rééchantillonnage
-        self.resampling_strategy = 'adasyn'  # 'adasyn', 'borderline', 'none'
+        # 'none' = utilise is_unbalance (plus stable que SMOTE/ADASYN)
+        self.resampling_strategy = 'none'  # 'adasyn', 'borderline', 'none'
 
         # Normalisation des features
         self.scaler = StandardScaler()
@@ -216,15 +217,16 @@ class LightGBMModel:
             'force_col_wise': True
         }
 
+        # Utiliser moins d'estimateurs sans early stopping
+        # (early stopping ne fonctionne pas bien avec données rééchantillonnées)
+        params['n_estimators'] = 200
+
         model = lgb.LGBMClassifier(**params)
 
         model.fit(
             X_train, y_train,
             eval_set=[(X_val, y_val)],
-            callbacks=[
-                lgb.early_stopping(stopping_rounds=50),
-                lgb.log_evaluation(period=0)
-            ]
+            callbacks=[lgb.log_evaluation(period=50)]  # Log toutes les 50 itérations
         )
 
         optimal_threshold = self._find_optimal_threshold_f2(X_val, y_val, model)
