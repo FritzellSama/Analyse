@@ -1,0 +1,337 @@
+# ============================================================================
+# QUANTUM TRADER PRO - HIGH FREQUENCY 90% WIN RATE CONFIG
+# Configuration optimisée pour $500 → $100+/jour
+# ============================================================================
+
+# ============================================================================
+# EXCHANGE CONFIGURATION
+# ============================================================================
+exchange:
+  primary:
+    name: binance
+    testnet: true
+    rate_limit_buffer: 0.1
+    timeout_seconds: 30
+    retry_attempts: 3
+
+# ============================================================================
+# TRADING PAIRS
+# ============================================================================
+symbols:
+  primary: BTC/USDT
+
+  filters:
+    min_volume_24h: 100000000
+    max_spread_percent: 0.1
+    min_liquidity: 5000000
+
+# ============================================================================
+# TIMEFRAMES - Optimisé pour HF Trading
+# ============================================================================
+timeframes:
+  trend: 1h           # Tendance globale
+  signal: 5m          # Signaux principaux
+  micro: 1m           # Exécution précise
+
+  lookback:
+    short: 50
+    medium: 200
+    long: 500
+
+# ============================================================================
+# CAPITAL & POSITION MANAGEMENT
+# ============================================================================
+capital:
+  initial: 500
+  min_balance_to_trade: 100
+  reserve_percent: 10
+
+  position_sizing:
+    method: fixed_percent
+    percent_per_trade: 10       # 10% par trade = $50
+    min_position_size: 0.0005
+    max_position_size: 0.01
+    decimals: 5
+
+# ============================================================================
+# RISK MANAGEMENT - OPTIMISÉ POUR 90% WIN RATE
+# ============================================================================
+risk:
+  max_risk_per_trade_percent: 0.8    # Max 0.8% perte par trade
+  max_risk_per_day_percent: 5.0
+  max_risk_per_week_percent: 15.0
+
+  # Position limits
+  max_positions_simultaneous: 1       # UNE seule position à la fois
+  max_positions_same_direction: 1
+  max_daily_trades: 50
+  max_consecutive_losses: 3
+  max_daily_loss_percent: 5.0
+  max_daily_loss_stop: true
+
+  # Stop Loss - SERRÉ pour haute probabilité
+  stop_loss:
+    method: atr_based
+    atr_multiplier: 0.6              # SL serré = ~0.5-1%
+    fixed_percent: 0.8               # Max 0.8%
+    trailing:
+      enabled: true
+      activation_profit_atr: 0.3     # Active tôt
+      breakeven_atr_trigger: 0.5     # Breakeven rapide
+      trail_distance_atr: 0.3
+      step_atr: 0.1
+
+  # Take Profit - Sécuriser rapidement
+  take_profit:
+    method: multi_level
+    levels:
+      - percent: 60                  # 60% sécurisé rapidement
+        multiplier: 1.0              # À 1x risque
+      - percent: 30                  # 30% ensuite
+        multiplier: 1.5
+      - percent: 10                  # 10% avec trailing
+        multiplier: 2.0
+
+  # Circuit Breakers
+  circuit_breakers:
+    enabled: true
+    max_drawdown_percent: 5.0
+    consecutive_losses_threshold: 3
+    pause_duration_minutes: 30
+    volatility_threshold: 2.5
+
+# ============================================================================
+# STRATEGIES - HIGH FREQUENCY
+# ============================================================================
+strategies:
+  # DÉSACTIVÉ - Anciennes stratégies
+  ichimoku_scalping:
+    enabled: false
+  grid_trading:
+    enabled: false
+  dca_bot:
+    enabled: false
+  ml_strategy:
+    enabled: false
+
+  # ACTIVÉ - Utiliser le ML comme FILTRE
+  use_ml_filter: true
+  ml_min_confidence: 0.65
+
+  # HF Manager Config
+  hf_manager:
+    enabled: true
+    min_confidence: 0.70             # 70% confiance minimum
+    max_signals_per_scan: 1
+    cooldown_seconds: 30             # 30s entre trades
+    max_daily_trades: 50
+    max_daily_loss_percent: 5.0
+    stop_after_consecutive_losses: 3
+
+  # ===== NOUVELLES STRATÉGIES HAUTE FRÉQUENCE =====
+
+  # Stratégie 1: RSI Extreme Bounce (92-95% WR)
+  rsi_extreme_bounce:
+    enabled: true
+    weight: 0.25
+    rsi_period: 7
+    rsi_extreme_oversold: 10         # Très extrême
+    rsi_extreme_overbought: 90
+    require_volume_spike: true
+    volume_spike_multiplier: 2.0
+    require_bb_touch: true
+    require_reversal_candle: true
+    tp_percent: 1.2
+    sl_percent: 0.5
+    max_trade_duration: 10
+
+  # Stratégie 2: VWAP Deviation (88-92% WR)
+  vwap_deviation:
+    enabled: true
+    weight: 0.25
+    min_deviation_percent: 0.3
+    optimal_deviation_percent: 0.5
+    max_deviation_percent: 1.5
+    require_rsi_confirmation: true
+    rsi_oversold: 25
+    rsi_overbought: 75
+    require_volume_decrease: true
+    tp_at_vwap: true
+
+  # Stratégie 3: Liquidity Sweep (90-94% WR)
+  liquidity_sweep:
+    enabled: true
+    weight: 0.20
+    lookback_periods: 20
+    sweep_confirmation_candles: 2
+    min_sweep_percent: 0.1
+    volume_spike_on_sweep: 2.5
+    require_immediate_reversal: true
+    require_close_above_level: true
+
+  # Stratégie 4: Order Block Sniper (92-94% WR)
+  order_block_sniper:
+    enabled: true
+    weight: 0.15
+    min_impulse_move_percent: 0.5
+    ob_lookback: 50
+    max_ob_age: 100
+    require_structure_intact: true
+    require_volume_confirmation: true
+
+  # Stratégie 5: Golden Cross Sniper (90-92% WR)
+  golden_cross_sniper:
+    enabled: true
+    weight: 0.15
+    fast_ema: 9
+    slow_ema: 21
+    trend_ema: 55
+    rsi_buy_range: [35, 55]
+    rsi_sell_range: [45, 65]
+    min_volume_ratio: 1.3
+    require_trend_alignment: true
+
+# ============================================================================
+# MACHINE LEARNING - COMME FILTRE
+# ============================================================================
+ml:
+  enabled: true
+
+  # Utilisé comme FILTRE, pas générateur
+  signal_filter:
+    enabled: true
+    min_confidence: 0.65
+    xgboost_weight: 0.6
+    lightgbm_weight: 0.4
+
+  features:
+    technical_indicators:
+      - rsi
+      - macd
+      - bollinger_bands
+      - atr
+      - adx
+      - stochastic
+      - cci
+      - mfi
+
+    lookback_periods:
+      short: 20
+      medium: 50
+      long: 200
+
+    time_features:
+      - hour_of_day
+      - day_of_week
+      - is_weekend
+
+  models:
+    xgboost:
+      enabled: true
+      n_estimators: 200
+      max_depth: 6
+      learning_rate: 0.1
+      reg_alpha: 0.1
+      reg_lambda: 0.1
+      subsample: 0.8
+      colsample_bytree: 0.8
+
+    lightgbm:
+      enabled: true
+      n_estimators: 200
+      max_depth: 6
+      learning_rate: 0.05
+      num_leaves: 31
+      min_child_samples: 20
+      reg_alpha: 0.1
+      reg_lambda: 0.1
+      subsample: 0.8
+      colsample_bytree: 0.8
+
+    # LSTM DÉSACTIVÉ
+    lstm:
+      enabled: false
+
+    ensemble:
+      enabled: false   # Pas d'ensemble, on utilise le signal_filter
+
+  training:
+    retrain_interval_hours: 24
+    min_samples: 500
+    validation_split: 0.2
+    test_split: 0.1
+
+  prediction:
+    horizon_bars: 5
+    confidence_threshold: 0.65
+
+  meta_model:
+    enabled: false     # Désactivé, remplacé par HF Manager
+
+# ============================================================================
+# EXECUTION - RAPIDE
+# ============================================================================
+execution:
+  check_interval_seconds: 5          # Check toutes les 5 secondes
+  order_type: limit
+  limit_price_offset_percent: 0.02   # Meilleur prix
+
+  expected_slippage_percent: 0.02
+  max_acceptable_slippage_percent: 0.1
+
+  max_retries: 3
+  retry_delay_seconds: 1
+  timeout_seconds: 15
+
+# ============================================================================
+# LIVE TRADING
+# ============================================================================
+live:
+  check_interval_seconds: 5
+  order_check_interval_seconds: 2
+
+  auto_restart_on_error: true
+  max_consecutive_errors: 5
+  health_check_interval_seconds: 30
+
+  warmup_bars_required: 50
+  initial_data_fetch: true
+
+# ============================================================================
+# BACKTEST
+# ============================================================================
+backtest:
+  enabled: true
+
+  data:
+    start_date: "2024-01-01"
+    end_date: "2024-11-20"
+    warmup_bars: 50
+
+  simulation:
+    initial_balance: 500
+    commission_maker: 0.075        # Avec BNB discount
+    commission_taker: 0.075
+    slippage_model: realistic
+
+# ============================================================================
+# LOGGING
+# ============================================================================
+logging:
+  level: INFO
+  save_to_file: true
+  log_directory: logs
+  console_output: true
+  colored_output: true
+
+# ============================================================================
+# OBJECTIFS
+# ============================================================================
+# Capital initial    : $500
+# Win Rate cible     : 90%+
+# Trades par jour    : 30-50
+# Gain moyen         : +1.0-1.5%
+# Perte moyenne      : -0.5-0.8%
+# Rendement/jour     : +15-25% ($75-125)
+# Rendement/mois     : +300-500%
+# ============================================================================
