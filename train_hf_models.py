@@ -6,7 +6,7 @@ Script pour entraîner XGBoost + LightGBM pour le système 90% Win Rate
 CHANGEMENTS vs train_ml.py :
 1. Target: threshold=0.003 (0.3%) au lieu de 0.001 (0.1%)
 2. Entraîne LightGBM (pas LSTM)
-3. SMOTE pour équilibrer les classes
+3. Gestion déséquilibre via is_unbalance + seuil ajusté
 4. Optimisé pour le ML Signal Filter
 
 Usage:
@@ -33,13 +33,6 @@ from ml_models.feature_engineering import FeatureEngineer
 from utils.logger import setup_logger
 from utils.config_helpers import get_nested_config
 
-# SMOTE pour équilibrage des classes
-try:
-    from imblearn.over_sampling import SMOTE
-    SMOTE_AVAILABLE = True
-except ImportError:
-    SMOTE_AVAILABLE = False
-    print("⚠️ imblearn non installé. Installer avec: pip install imbalanced-learn")
 
 
 class HFModelTrainer:
@@ -155,33 +148,11 @@ class HFModelTrainer:
 
         self.logger.info(f"📊 Split: Train={len(X_train)} | Test={len(X_test)}")
 
-        # 6. SMOTE pour équilibrer les classes d'entraînement
-        if SMOTE_AVAILABLE:
-            self.logger.info("\n⚖️ Application de SMOTE pour équilibrer les classes...")
-            try:
-                # Compter avant SMOTE
-                n_pos_before = y_train.sum()
-                n_neg_before = len(y_train) - n_pos_before
-                self.logger.info(f"   Avant SMOTE: {n_neg_before} négatifs / {n_pos_before} positifs")
-
-                # Appliquer SMOTE
-                smote = SMOTE(random_state=42, sampling_strategy=0.5)  # 50% = 1 positif pour 2 négatifs
-                X_train_balanced, y_train_balanced = smote.fit_resample(X_train, y_train)
-
-                # Compter après SMOTE
-                n_pos_after = y_train_balanced.sum()
-                n_neg_after = len(y_train_balanced) - n_pos_after
-                self.logger.info(f"   Après SMOTE: {n_neg_after} négatifs / {n_pos_after} positifs")
-                self.logger.info(f"   ✅ Classes équilibrées (ratio 2:1)")
-
-                # Utiliser les données équilibrées pour l'entraînement
-                X_train = pd.DataFrame(X_train_balanced, columns=X_train.columns)
-                y_train = pd.Series(y_train_balanced)
-
-            except Exception as e:
-                self.logger.warning(f"⚠️ SMOTE a échoué: {e} - utilisation données originales")
-        else:
-            self.logger.warning("⚠️ SMOTE non disponible - classes non équilibrées")
+        # 6. Afficher distribution des classes
+        n_pos = y_train.sum()
+        n_neg = len(y_train) - n_pos
+        self.logger.info(f"⚖️ Classes: {n_neg} négatifs / {n_pos} positifs ({n_pos/len(y_train)*100:.1f}% positifs)")
+        self.logger.info(f"   → Gestion via is_unbalance=True + seuil de prédiction ajusté")
 
         results = {}
 

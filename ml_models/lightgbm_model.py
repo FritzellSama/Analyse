@@ -55,8 +55,9 @@ class LightGBMModel:
         self.feature_importance = {}
         self.training_metrics = {}
 
-        # Seuil de classification ajustable (0.3 au lieu de 0.5 pour classe déséquilibrée)
-        self.prediction_threshold = 0.35
+        # Seuil de classification ajustable (bas pour détecter plus de positifs)
+        # Avec 10-11% de positifs et is_unbalance=True, on baisse le seuil
+        self.prediction_threshold = 0.20
 
         # Paths
         self.model_dir = Path('ml_models/saved_models')
